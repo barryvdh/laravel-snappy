@@ -1,0 +1,22 @@
+{
+    "name": "barryvdh/laravel-snappy",
+    "description": "Snappy PDF/Image for Laravel 4",
+    "keywords": ["laravel","snappy", "pdf", "image", "wkhtmltopdf", "wkhtmltoimage"],
+    "authors": [
+        {
+            "name": "Barry vd. Heuvel",
+            "email": "barryvdh@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.x",
+        "knplabs/knp-snappy": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Barryvdh\\Snappy": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
