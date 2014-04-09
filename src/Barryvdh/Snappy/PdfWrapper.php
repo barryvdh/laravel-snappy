@@ -103,8 +103,7 @@ class PdfWrapper{
      * @return static
      */
     public function loadView($view, $data = array(), $mergeData = array()){
-        $html = \View::make($view, $data, $mergeData);
-        $this->html = (string) $html;
+        $this->html = \View::make($view, $data, $mergeData)->render();
         $this->file = null;
         return $this;
     }
