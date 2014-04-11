@@ -65,6 +65,7 @@ You can  publish the config-file to change some settings (default paper etc).
 
     php artisan config:publish barryvdh/laravel-snappy
 
+See the [wkhtmltopdf manual](http://wkhtmltopdf.org/usage/wkhtmltopdf.txt) for more information/settings.
 
 ### License
 
