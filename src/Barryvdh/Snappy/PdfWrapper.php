@@ -219,6 +219,7 @@ class PdfWrapper{
      * 
      * @param string $name
      * @param array $aruments
+     * @return mixed
      */
     public function __call($name, array $arguments)
     {
