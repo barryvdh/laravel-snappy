@@ -138,22 +138,24 @@ class PdfWrapper{
 
 
     /**
-     * Output the PDF as a string.
-     *
-     * @return string The rendered PDF as string
-     */
-    public function output()
-    {
-        $output = '';
-        if ($this->html)
-        {
-            $output = $this->snappy->getOutputFromHtml($this->html, $this->options);
-        }
-        elseif ($this->file)
-        {
-            $output = $this->snappy->getOutput($this->file, $this->options);
-        }
-        return $output;
+	 * Output the PDF as a string.
+	 *
+	 * @return string The rendered PDF as string
+	 * @throws \InvalidArgumentException
+	 */
+	public function output()
+	{
+		if ($this->html)
+		{
+			return $this->snappy->getOutputFromHtml($this->html, $this->options);
+		}
+
+		if ($this->file)
+		{
+			return $this->snappy->getOutput($this->file, $this->options);
+		}
+
+		throw new \InvalidArgumentException('PDF Generator requires a html or file in order to produce output.');
     }
 
     /**
