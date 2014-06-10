@@ -218,7 +218,7 @@ class PdfWrapper{
      * ->file => loadFile'
      * 
      * @param string $name
-     * @param array $aruments
+     * @param array $arguments
      * @return mixed
      */
     public function __call($name, array $arguments)
