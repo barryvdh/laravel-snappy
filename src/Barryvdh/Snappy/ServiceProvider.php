@@ -1,8 +1,7 @@
 <?php namespace Barryvdh\Snappy;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use Knp\Snappy\Image;
-use Knp\Snappy\Pdf;
+
 class ServiceProvider extends BaseServiceProvider {
 
 	/**
@@ -11,7 +10,6 @@ class ServiceProvider extends BaseServiceProvider {
 	 * @var bool
 	 */
 	protected $defer = false;
-
 
 	/**
 	 * Register the service provider.
@@ -27,7 +25,7 @@ class ServiceProvider extends BaseServiceProvider {
             {
                 $binary = $app['config']->get('laravel-snappy::config.pdf.binary');
                 $options = $app['config']->get('laravel-snappy::config.pdf.options');
-                $snappy = new Pdf($binary, $options);
+                $snappy = new IlluminateSnappyPdf($app['files'], $binary, $options);
                 return $snappy;
             });
 
@@ -43,7 +41,7 @@ class ServiceProvider extends BaseServiceProvider {
             {
                 $binary = $app['config']->get('laravel-snappy::config.image.binary');
                 $options = $app['config']->get('laravel-snappy::config.image.options');
-                $image = new Image($binary, $options);
+                $image = new IlluminateSnappyImage($app['files'], $binary, $options);
                 return $image;
             });
         }

@@ -1,5 +1,4 @@
-<?php
-namespace Barryvdh\Snappy;
+<?php namespace Barryvdh\Snappy;
 
 use Knp\Snappy\Pdf as SnappyPDF;
 use Illuminate\Support\Facades\View;
@@ -135,8 +134,6 @@ class PdfWrapper{
         return $this;
     }
 
-
-
     /**
 	 * Output the PDF as a string.
 	 *
@@ -207,7 +204,7 @@ class PdfWrapper{
             echo $that->output();
         }, 200, array(
             'Content-Type' => 'application/pdf',
-            'Content-Disposition' =>  'inline; filename="'.$filename.'"',
+            'Content-Disposition' => 'inline; filename="'.$filename.'"',
         ));
     }
 
@@ -217,7 +214,7 @@ class PdfWrapper{
      * Also shortcut's
      * ->html => loadHtml
      * ->view => loadView
-     * ->file => loadFile'
+     * ->file => loadFile
      * 
      * @param string $name
      * @param array $arguments
