@@ -1,6 +1,7 @@
-<?php namespace 
+<?php namespace Barryvdh\Snappy;
 
 use Knp\Snappy\Pdf;
+use Illuminate\Filesystem\Filesystem;
 
 class IlluminateSnappyPdf extends Pdf {
 
