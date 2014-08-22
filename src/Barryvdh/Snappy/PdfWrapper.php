@@ -225,10 +225,10 @@ class PdfWrapper{
         $method = 'load' . ucfirst($name);
         if (method_exists($this, $method))
         {
-            return call_user_func_array([$this, $method], $arguments);
+            return call_user_func_array(array($this, $method), $arguments);
         }
         
-        return call_user_func_array (array( $this->snappy, $name), $arguments);
+        return call_user_func_array (array($this->snappy, $name), $arguments);
     }
 
 }
