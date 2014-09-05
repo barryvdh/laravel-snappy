@@ -16,8 +16,8 @@
         "knplabs/knp-snappy": "*"
     },
     "autoload": {
-        "psr-0": {
-            "Barryvdh\\Snappy": "src/"
+        "psr-4": {
+            "Barryvdh\\Snappy\\": "src/"
         }
     },
     "minimum-stability": "dev"
