@@ -1,12 +1,12 @@
 <?php namespace Barryvdh\Snappy;
 
 use Knp\Snappy\Image;
-use Illuminate\Filesystem\Filesystem;
+use Illuminate\Contracts\Filesystem\Filesystem;
 
 class IlluminateSnappyImage extends Image {
 
 	/**
-	 * @param \Illuminate\Filesystem\Filesystem
+	 * @param \Illuminate\Contracts\Filesystem\Filesystem
      * @param string $binary
      * @param array $options
 	 */
