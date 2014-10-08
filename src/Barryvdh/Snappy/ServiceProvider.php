@@ -25,10 +25,10 @@ class ServiceProvider extends BaseServiceProvider {
             {
                 $binary = $app['config']->get('laravel-snappy::config.pdf.binary');
                 $options = $app['config']->get('laravel-snappy::config.pdf.options');
-                $timeout = $app['config']->get('laravel-snappy::config.pdf.timeout');
+                $timeout = $app['config']->get('laravel-snappy::config.pdf.timeout', false);
                 
                 $snappy = new IlluminateSnappyPdf($app['files'], $binary, $options);
-                if ($timeout) {
+                if (false !== $timeout) {
                     $snappy->setTimeout($timeout);
                 }
                 
@@ -47,10 +47,10 @@ class ServiceProvider extends BaseServiceProvider {
             {
                 $binary = $app['config']->get('laravel-snappy::config.image.binary');
                 $options = $app['config']->get('laravel-snappy::config.image.options');
-                $timeout = $app['config']->get('laravel-snappy::config.image.timeout');
+                $timeout = $app['config']->get('laravel-snappy::config.image.timeout', false);
                 
                 $image = new IlluminateSnappyImage($app['files'], $binary, $options);
-                if ($timeout) {
+                if (false !== $timeout) {
                     $image->setTimeout($timeout);
                 }
                 
