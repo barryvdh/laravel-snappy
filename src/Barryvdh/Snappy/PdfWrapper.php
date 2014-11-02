@@ -180,12 +180,12 @@ class PdfWrapper{
      * Make the PDF downloadable by the user
      *
      * @param string $filename
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Illuminate\Support\Facades\Response
      */
     public function download($filename = 'document.pdf')
     {
         $output = $this->output();
-        return \Response::make($output, 200, array(
+        return \Illuminate\Support\Facades\Response::make($output, 200, array(
             'Content-Type' => 'application/pdf',
             'Content-Disposition' =>  'attachment; filename="'.$filename.'"'
         ));
@@ -195,12 +195,12 @@ class PdfWrapper{
      * Return a response with the PDF to show in the browser
      *
      * @param string $filename
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Illuminate\Support\Facades\Response
      */
     public function stream($filename = 'document.pdf')
     {
         $that = $this;
-        return \Response::stream(function() use($that){
+        return \Illuminate\Support\Facades\Response::stream(function() use($that){
             echo $that->output();
         }, 200, array(
             'Content-Type' => 'application/pdf',
