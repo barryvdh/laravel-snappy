@@ -86,6 +86,27 @@ class ImageWrapper {
     }
 
     /**
+     * Output the PDF as a string.
+     *
+     * @return string The rendered PDF as string
+     * @throws \InvalidArgumentException
+     */
+    public function output()
+    {
+        if ($this->html)
+        {
+            return $this->snappy->getOutputFromHtml($this->html, $this->options);
+        }
+
+        if ($this->file)
+        {
+            return $this->snappy->getOutput($this->file, $this->options);
+        }
+
+        throw new \InvalidArgumentException('Image Generator requires a html or file in order to produce output.');
+    }
+
+    /**
      * Save the image to a file
      *
      * @param $filename
