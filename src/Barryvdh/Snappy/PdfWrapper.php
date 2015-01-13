@@ -135,6 +135,21 @@ class PdfWrapper{
     }
 
     /**
+     * @param $view
+     * @param array $data
+     * @param array $mergeData
+     * @return $this
+     *
+     * Adds a view to the current loaded view.
+     */
+    public function addView($view, $data = array(), $mergeData = array())
+    {
+        $this->html .= View::make($view, $data, $mergeData)->render();
+        $this->file = null;
+        return $this;
+    }
+
+    /**
 	 * Output the PDF as a string.
 	 *
 	 * @return string The rendered PDF as string
