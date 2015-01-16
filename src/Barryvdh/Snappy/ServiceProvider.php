@@ -26,12 +26,12 @@ class ServiceProvider extends BaseServiceProvider {
                 $binary = $app['config']->get('laravel-snappy::config.pdf.binary');
                 $options = $app['config']->get('laravel-snappy::config.pdf.options');
                 $timeout = $app['config']->get('laravel-snappy::config.pdf.timeout', false);
-                
+
                 $snappy = new IlluminateSnappyPdf($app['files'], $binary, $options);
                 if (false !== $timeout) {
                     $snappy->setTimeout($timeout);
                 }
-                
+
                 return $snappy;
             });
 
@@ -48,13 +48,18 @@ class ServiceProvider extends BaseServiceProvider {
                 $binary = $app['config']->get('laravel-snappy::config.image.binary');
                 $options = $app['config']->get('laravel-snappy::config.image.options');
                 $timeout = $app['config']->get('laravel-snappy::config.image.timeout', false);
-                
+
                 $image = new IlluminateSnappyImage($app['files'], $binary, $options);
                 if (false !== $timeout) {
                     $image->setTimeout($timeout);
                 }
-                
+
                 return $image;
+            });
+
+            $this->app['snappy.image.wrapper'] = $this->app->share(function($app)
+            {
+                return new ImageWrapper($app['snappy.image']);
             });
         }
 
@@ -67,7 +72,7 @@ class ServiceProvider extends BaseServiceProvider {
 	 */
 	public function provides()
 	{
-		return array('snappy.pdf', 'snappy.pdf.wrapper', 'snappy.image');
+		return array('snappy.pdf', 'snappy.pdf.wrapper', 'snappy.image', 'snappy.image.wrapper');
 	}
 
 }

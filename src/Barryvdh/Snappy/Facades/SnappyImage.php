@@ -10,7 +10,7 @@ class SnappyImage extends BaseFacade {
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'snappy.image'; }
+    protected static function getFacadeAccessor() { return 'snappy.image.wrapper'; }
 
 
 }
