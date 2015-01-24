@@ -17,11 +17,14 @@ class ServiceProvider extends BaseServiceProvider {
 	 * @return void
 	 */
 	public function register()
-	{
+    {
         $config = require __DIR__ . '/../config/snappy.php';
         $config = array_merge($config, $this->app['config']->get('snappy', []));
         $this->app['config']->set('snappy', $config);
+    }
 
+    public function boot()
+    {
         if($this->app['config']->get('snappy.pdf.enabled')){
             $this->app['snappy.pdf'] = $this->app->share(function($app)
             {
