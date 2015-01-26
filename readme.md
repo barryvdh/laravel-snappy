@@ -68,7 +68,7 @@ If you need the output as a string, you can get the rendered PDF with the output
 
 You can  publish the config-file to change some settings (default paper etc).
 
-    php artisan config:publish barryvdh/laravel-snappy
+    php artisan vendor:publish
 
 See the [wkhtmltopdf manual](http://wkhtmltopdf.org/usage/wkhtmltopdf.txt) for more information/settings.
 
