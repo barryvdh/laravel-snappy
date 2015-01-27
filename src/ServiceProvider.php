@@ -19,7 +19,7 @@ class ServiceProvider extends BaseServiceProvider {
 	public function register()
     {      
         $configPath = __DIR__ . '/../config/snappy.php';
-        $this->loadConfigFrom('snappy', $configPath);
+        $this->mergeConfigFrom('snappy', $configPath);
         $this->publishes([$configPath => config_path('snappy.php')]);
     }
 
@@ -79,19 +79,4 @@ class ServiceProvider extends BaseServiceProvider {
 	{
 		return array('snappy.pdf', 'snappy.pdf.wrapper', 'snappy.image', 'snappy.image.wrapper');
 	}
-    
-    /**
-     * Register the package defaults.
-     *
-     * @param  string  $key
-     * @param  string  $path
-     * @return void
-     */
-    protected function loadConfigFrom($key, $path)
-    {
-        $defaults = $this->app['files']->getRequire($path);
-        $config = $this->app['config']->get($key, []);
-        $this->app['config']->set($key, config_merge($defaults, $config));
-    }
-
 }
