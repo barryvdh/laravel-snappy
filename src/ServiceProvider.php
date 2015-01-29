@@ -19,7 +19,7 @@ class ServiceProvider extends BaseServiceProvider {
 	public function register()
     {      
         $configPath = __DIR__ . '/../config/snappy.php';
-        $this->mergeConfigFrom('snappy', $configPath);
+        $this->mergeConfigFrom($configPath, 'snappy');
         $this->publishes([$configPath => config_path('snappy.php')]);
     }
 
