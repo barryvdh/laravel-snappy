@@ -8,6 +8,7 @@ return array(
         'binary' => '/usr/local/bin/wkhtmltopdf',
         'timeout' => false,
         'options' => array(),
+		'tempPath' => base_path().'/app/storage/pdftemp'
     ),
     'image' => array(
         'enabled' => true,

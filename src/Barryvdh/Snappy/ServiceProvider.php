@@ -31,6 +31,9 @@ class ServiceProvider extends BaseServiceProvider {
                 if (false !== $timeout) {
                     $snappy->setTimeout($timeout);
                 }
+				
+				if($app['config']->has('laravel-snappy::config.pdf.tempPath'))
+                    $snappy->setTemporaryFolder($app['config']->get('laravel-snappy::config.pdf.tempPath'));
                 
                 return $snappy;
             });
