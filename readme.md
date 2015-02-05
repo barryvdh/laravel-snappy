@@ -1,5 +1,7 @@
 ## Snappy PDF/Image Wrapper for Laravel 5
 
+### For Laravel 4.x, check [version 0.1](https://github.com/barryvdh/laravel-ide-helper/tree/0.1)
+
 This package is a ServiceProvider for Snappy: [https://github.com/KnpLabs/snappy](https://github.com/KnpLabs/snappy).
 
 You need to have wkhtmltopdf/wkhtmltoimage installed. You can download wkhtmltopdf from http://wkhtmltopdf.org/downloads.html See [https://github.com/KnpLabs/snappy#wkhtmltopdf-binary-as-composer-dependencies](https://github.com/KnpLabs/snappy#wkhtmltopdf-binary-as-composer-dependencies) how to do it with composer. Please note that some dependencies (libXrender for example) may not be present on your system and may require manual installation. After installing, verify first if wkhtmltopdf works correctly when invoked from the command line / shell.
