@@ -1,7 +1,9 @@
 <?php namespace Barryvdh\Snappy;
 
+use Illuminate\Http\Response;
 use Knp\Snappy\Pdf as SnappyPDF;
 use Illuminate\Support\Facades\View;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * A Laravel wrapper for SnappyPDF
@@ -180,12 +182,11 @@ class PdfWrapper{
      * Make the PDF downloadable by the user
      *
      * @param string $filename
-     * @return \Illuminate\Support\Facades\Response
+     * @return Response
      */
     public function download($filename = 'document.pdf')
     {
-        $output = $this->output();
-        return \Illuminate\Support\Facades\Response::make($output, 200, array(
+        return new Response($this->output(), 200, array(
             'Content-Type' => 'application/pdf',
             'Content-Disposition' =>  'attachment; filename="'.$filename.'"'
         ));
@@ -195,12 +196,12 @@ class PdfWrapper{
      * Return a response with the PDF to show in the browser
      *
      * @param string $filename
-     * @return \Illuminate\Support\Facades\Response
+     * @return StreamedResponse
      */
     public function stream($filename = 'document.pdf')
     {
         $that = $this;
-        return \Illuminate\Support\Facades\Response::stream(function() use($that){
+        return new StreamedResponse(function() use($that){
             echo $that->output();
         }, 200, array(
             'Content-Type' => 'application/pdf',
