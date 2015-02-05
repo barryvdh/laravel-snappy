@@ -151,9 +151,8 @@ class ImageWrapper {
      */
     public function stream($filename = 'image.jpg')
     {
-        $that = $this;
-        return new StreamedResponse(function() use($that){
-            echo $that->output();
+        return new StreamedResponse(function() {
+            echo $this->output();
         }, 200, array(
             'Content-Type' => 'image/jpeg',
             'Content-Disposition' => 'inline; filename="'.$filename.'"',

@@ -200,9 +200,8 @@ class PdfWrapper{
      */
     public function stream($filename = 'document.pdf')
     {
-        $that = $this;
-        return new StreamedResponse(function() use($that){
-            echo $that->output();
+        return new StreamedResponse(function() {
+            echo $this->output();
         }, 200, array(
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'inline; filename="'.$filename.'"',
