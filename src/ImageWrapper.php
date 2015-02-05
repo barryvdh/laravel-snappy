@@ -1,7 +1,9 @@
 <?php namespace Barryvdh\Snappy;
 
+use Illuminate\Http\Response;
 use Knp\Snappy\Image as SnappyImage;
 use Illuminate\Support\Facades\View;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * A Laravel wrapper for SnappyImage
@@ -135,8 +137,7 @@ class ImageWrapper {
      */
     public function download($filename = 'image.jpg')
     {
-        $output = $this->output();
-        return \Response::make($output, 200, array(
+        return new Response($this->output(), 200, array(
             'Content-Type' => 'image/jpeg',
             'Content-Disposition' =>  'attachment; filename="'.$filename.'"'
         ));
@@ -151,7 +152,7 @@ class ImageWrapper {
     public function stream($filename = 'image.jpg')
     {
         $that = $this;
-        return \Response::stream(function() use($that){
+        return new StreamedResponse(function() use($that){
             echo $that->output();
         }, 200, array(
             'Content-Type' => 'image/jpeg',
