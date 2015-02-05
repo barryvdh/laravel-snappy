@@ -1,6 +1,6 @@
 ## Snappy PDF/Image Wrapper for Laravel 4
 
-### For Laravel 5, check the [0.2 branch](https://github.com/barryvdh/laravel-snappy/tree/0.2)
+### For Laravel 5, check the [0.2/master branch](https://github.com/barryvdh/laravel-snappy)
 
 This package is a ServiceProvider for Snappy: [https://github.com/KnpLabs/snappy](https://github.com/KnpLabs/snappy).
 
