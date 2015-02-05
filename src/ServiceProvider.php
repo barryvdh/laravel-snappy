@@ -20,11 +20,13 @@ class ServiceProvider extends BaseServiceProvider {
     {      
         $configPath = __DIR__ . '/../config/snappy.php';
         $this->mergeConfigFrom($configPath, 'snappy');
-        $this->publishes([$configPath => config_path('snappy.php')]);
     }
 
     public function boot()
     {
+        $configPath = __DIR__ . '/../config/snappy.php';
+        $this->publishes([$configPath => config_path('snappy.php')], 'config');
+        
         if($this->app['config']->get('snappy.pdf.enabled')){
             $this->app['snappy.pdf'] = $this->app->share(function($app)
             {
