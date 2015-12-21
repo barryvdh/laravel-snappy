@@ -81,7 +81,11 @@ return PDF::loadFile('http://www.github.com')->stream('github.pdf');
 You can change the orientation and paper size
 
 ```php
-PDF::loadHTML($html)->setPaper('a4')->setOrientation('landscape')->setOption('margin-bottom', 0)->save('myfile.pdf')
+PDF::loadHTML($html)
+    ->setPaper('a4')
+    ->setOrientation('landscape')
+    ->setOption('margin-bottom', 0)
+    ->save('myfile.pdf')
 ```
 
 If you need the output as a string, you can get the rendered PDF with the output() function, so you can save/output it yourself.
