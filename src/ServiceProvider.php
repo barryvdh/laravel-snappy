@@ -30,9 +30,9 @@ class ServiceProvider extends BaseServiceProvider {
         if($this->app['config']->get('snappy.pdf.enabled')){
             $this->app['snappy.pdf'] = $this->app->share(function($app)
             {
-                $binary = $app['config']->get('snappy.pdf.binary');
-                $options = $app['config']->get('snappy.pdf.options');
-                $env = $app['config']->get('snappy.pdf.env');
+                $binary = $app['config']->get('snappy.pdf.binary', 'wkhtmltopdf');
+                $options = $app['config']->get('snappy.pdf.options', array());
+                $env = $app['config']->get('snappy.pdf.env', array());
                 $timeout = $app['config']->get('snappy.pdf.timeout', false);
 
                 $snappy = new IlluminateSnappyPdf($app['files'], $binary, $options, $env);
@@ -53,9 +53,9 @@ class ServiceProvider extends BaseServiceProvider {
         if($this->app['config']->get('snappy.image.enabled')){
             $this->app['snappy.image'] = $this->app->share(function($app)
             {
-                $binary = $app['config']->get('snappy.image.binary');
-                $options = $app['config']->get('snappy.image.options');
-                $env = $app['config']->get('snappy.image.env');
+                $binary = $app['config']->get('snappy.image.binary', 'wkhtmltoimage');
+                $options = $app['config']->get('snappy.image.options', array());
+                $env = $app['config']->get('snappy.image.env', array());
                 $timeout = $app['config']->get('snappy.image.timeout', false);
 
                 $image = new IlluminateSnappyImage($app['files'], $binary, $options, $env);
