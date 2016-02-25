@@ -192,11 +192,26 @@ class PdfWrapper{
         ));
     }
 
+	/**
+     * Return a response with the PDF to show in the browser
+     *
+     * @param string $filename
+     * @return StreamedResponse
+     */
+    public function inline($filename = 'document.pdf')
+    {
+        return new Response($this->output(), 200, array(
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="'.$filename.'"',
+        ));
+    }
+
     /**
      * Return a response with the PDF to show in the browser
      *
      * @param string $filename
      * @return StreamedResponse
+     * @deprecated use inline() instead
      */
     public function stream($filename = 'document.pdf')
     {
