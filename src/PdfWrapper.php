@@ -182,7 +182,7 @@ class PdfWrapper{
      * Make the PDF downloadable by the user
      *
      * @param string $filename
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function download($filename = 'document.pdf')
     {
@@ -210,7 +210,7 @@ class PdfWrapper{
      * Return a response with the PDF to show in the browser
      *
      * @param string $filename
-     * @return StreamedResponse
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
      * @deprecated use inline() instead
      */
     public function stream($filename = 'document.pdf')
