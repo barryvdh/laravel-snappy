@@ -32,9 +32,10 @@ class ServiceProvider extends BaseServiceProvider {
             {
                 $binary = $app['config']->get('snappy.pdf.binary');
                 $options = $app['config']->get('snappy.pdf.options');
+                $env = $app['config']->get('snappy.pdf.env');
                 $timeout = $app['config']->get('snappy.pdf.timeout', false);
 
-                $snappy = new IlluminateSnappyPdf($app['files'], $binary, $options);
+                $snappy = new IlluminateSnappyPdf($app['files'], $binary, $options, $env);
                 if (false !== $timeout) {
                     $snappy->setTimeout($timeout);
                 }
@@ -54,9 +55,10 @@ class ServiceProvider extends BaseServiceProvider {
             {
                 $binary = $app['config']->get('snappy.image.binary');
                 $options = $app['config']->get('snappy.image.options');
+                $env = $app['config']->get('snappy.image.env');
                 $timeout = $app['config']->get('snappy.image.timeout', false);
 
-                $image = new IlluminateSnappyImage($app['files'], $binary, $options);
+                $image = new IlluminateSnappyImage($app['files'], $binary, $options, $env);
                 if (false !== $timeout) {
                     $image->setTimeout($timeout);
                 }

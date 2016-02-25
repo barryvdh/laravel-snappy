@@ -18,18 +18,18 @@ In addition to the Snappy classes, it provides a wrapper, similar to https://git
 
 Require this package in your composer.json and update composer.
 
-    "barryvdh/laravel-snappy": "0.2.x"
+    composer require barryvdh/laravel-snappy
 
 After updating composer, add the ServiceProvider to the providers array in app/config/app.php
 
-    'Barryvdh\Snappy\ServiceProvider',
+    Barryvdh\Snappy\ServiceProvider::class,
 
 You can optionally use the facade for shorter code. Add this to your facades:
 
-    'PDF' => 'Barryvdh\Snappy\Facades\SnappyPdf',
-    'Image' => 'Barryvdh\Snappy\Facades\SnappyImage',
+    'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+    'Image' => Barryvdh\Snappy\Facades\SnappyImage::class,
 
-You can create a new Snappy PDF/Image instance and load a HTML string, file or view name. You can save it to a file, or stream (show in browser) or download.
+You can create a new Snappy PDF/Image instance and load a HTML string, file or view name. You can save it to a file, or inline (show in browser) or download.
 
 Using the App container:
 
@@ -51,7 +51,7 @@ Using the wrapper:
 
     $pdf = App::make('snappy.pdf.wrapper');
     $pdf->loadHTML('<h1>Test</h1>');
-    return $pdf->stream();
+    return $pdf->inline();
 
 Or use the facade:
 
@@ -60,7 +60,7 @@ Or use the facade:
 
 You can chain the methods:
 
-    return PDF::loadFile('http://www.github.com')->stream('github.pdf');
+    return PDF::loadFile('http://www.github.com')->inline('github.pdf');
 
 You can change the orientation and paper size
 

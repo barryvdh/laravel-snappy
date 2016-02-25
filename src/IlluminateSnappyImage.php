@@ -10,9 +10,9 @@ class IlluminateSnappyImage extends Image {
      * @param string $binary
      * @param array $options
 	 */
-	public function __construct(Filesystem $fs, $binary, array $options)
+	public function __construct(Filesystem $fs, $binary, array $options, array $env)
 	{
-		parent::__construct($binary, $options);
+		parent::__construct($binary, $options, $env);
 
 		$this->fs = $fs;
 	}
