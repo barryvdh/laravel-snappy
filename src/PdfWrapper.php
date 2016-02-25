@@ -45,8 +45,8 @@ class PdfWrapper{
     /**
      * Set the paper size (default A4)
      *
-     * @param string $paper
-     * @param string $orientation
+     * @param  string $paper
+     * @param  string $orientation
      * @return $this
      */
     public function setPaper($paper, $orientation=null)
@@ -61,8 +61,8 @@ class PdfWrapper{
     /**
      * Set the orientation (default portrait)
      *
-     * @param string $orientation
-     * @return static
+     * @param  string $orientation
+     * @return $this
      */
     public function setOrientation($orientation)
     {
@@ -83,12 +83,21 @@ class PdfWrapper{
         return $this;
     }
 
+    /**
+     * @param  string $name
+     * @param  mixed $value
+     * @return $this
+     */
     public function setOption($name, $value)
     {
         $this->snappy->setOption($name, $value);
         return $this;
     }
 
+    /**
+     * @param  array $options
+     * @return $this
+     */
     public function setOptions($options)
     {
         $this->snappy->setOptions($options);
@@ -98,8 +107,8 @@ class PdfWrapper{
     /**
      * Load a HTML string
      *
-     * @param string $string
-     * @return static
+     * @param  string $string
+     * @return $this
      */
     public function loadHTML($string)
     {
@@ -111,8 +120,8 @@ class PdfWrapper{
     /**
      * Load a HTML file
      *
-     * @param string $file
-     * @return static
+     * @param  string $file
+     * @return $this
      */
     public function loadFile($file)
     {
@@ -124,10 +133,10 @@ class PdfWrapper{
     /**
      * Load a View and convert to HTML
      *
-     * @param string $view
-     * @param array $data
-     * @param array $mergeData
-     * @return static
+     * @param  string $view
+     * @param  array $data
+     * @param  array $mergeData
+     * @return $this
      */
     public function loadView($view, $data = array(), $mergeData = array())
     {
@@ -160,8 +169,8 @@ class PdfWrapper{
     /**
      * Save the PDF to a file
      *
-     * @param $filename
-     * @return static
+     * @param  $filename
+     * @return $this
      */
     public function save($filename, $overwrite = false)
     {
@@ -192,11 +201,11 @@ class PdfWrapper{
         ));
     }
 
-	/**
+    /**
      * Return a response with the PDF to show in the browser
      *
      * @param string $filename
-     * @return StreamedResponse
+     * @return \Illuminate\Http\Response
      */
     public function inline($filename = 'document.pdf')
     {
