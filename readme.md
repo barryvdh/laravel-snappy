@@ -29,7 +29,7 @@ You can optionally use the facade for shorter code. Add this to your facades:
     'PDF' => 'Barryvdh\Snappy\Facades\SnappyPdf',
     'Image' => 'Barryvdh\Snappy\Facades\SnappyImage',
 
-You can create a new Snappy PDF/Image instance and load a HTML string, file or view name. You can save it to a file, or stream (show in browser) or download.
+You can create a new Snappy PDF/Image instance and load a HTML string, file or view name. You can save it to a file, or inline (show in browser) or download.
 
 Using the App container:
 
@@ -51,7 +51,7 @@ Using the wrapper:
 
     $pdf = App::make('snappy.pdf.wrapper');
     $pdf->loadHTML('<h1>Test</h1>');
-    return $pdf->stream();
+    return $pdf->inline();
 
 Or use the facade:
 
@@ -60,7 +60,7 @@ Or use the facade:
 
 You can chain the methods:
 
-    return PDF::loadFile('http://www.github.com')->stream('github.pdf');
+    return PDF::loadFile('http://www.github.com')->inline('github.pdf');
 
 You can change the orientation and paper size
 
