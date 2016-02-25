@@ -30,7 +30,7 @@ class ServiceProvider extends BaseServiceProvider {
         if($this->app['config']->get('snappy.pdf.enabled')){
             $this->app['snappy.pdf'] = $this->app->share(function($app)
             {
-                $binary = $app['config']->get('snappy.pdf.binary', 'wkhtmltopdf');
+                $binary = $app['config']->get('snappy.pdf.binary', '/usr/local/bin/wkhtmltopdf');
                 $options = $app['config']->get('snappy.pdf.options', array());
                 $env = $app['config']->get('snappy.pdf.env', array());
                 $timeout = $app['config']->get('snappy.pdf.timeout', false);
@@ -53,7 +53,7 @@ class ServiceProvider extends BaseServiceProvider {
         if($this->app['config']->get('snappy.image.enabled')){
             $this->app['snappy.image'] = $this->app->share(function($app)
             {
-                $binary = $app['config']->get('snappy.image.binary', 'wkhtmltoimage');
+                $binary = $app['config']->get('snappy.image.binary', '/usr/local/bin/wkhtmltoimage');
                 $options = $app['config']->get('snappy.image.options', array());
                 $env = $app['config']->get('snappy.image.env', array());
                 $timeout = $app['config']->get('snappy.image.timeout', false);
