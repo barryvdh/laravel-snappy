@@ -47,6 +47,7 @@ class ServiceProvider extends BaseServiceProvider {
             {
                 return new PdfWrapper($app['snappy.pdf']);
             });
+            $this->app->alias('snappy.pdf.wrapper', 'Barryvdh\Snappy\PdfWrapper');
         }
 
 
@@ -70,6 +71,7 @@ class ServiceProvider extends BaseServiceProvider {
             {
                 return new ImageWrapper($app['snappy.image']);
             });
+            $this->app->alias('snappy.image.wrapper', 'Barryvdh\Snappy\ImageWrapper');
         }
 
 	}
