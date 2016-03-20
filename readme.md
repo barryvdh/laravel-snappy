@@ -1,4 +1,4 @@
-## Snappy PDF/Image Wrapper for Laravel 5
+## Snappy PDF/Image Wrapper for Laravel 5 and Lumen 5.1
 
 ### For Laravel 4.x, check [version 0.1](https://github.com/barryvdh/laravel-snappy/tree/0.1)
 
@@ -20,6 +20,8 @@ Require this package in your composer.json and update composer.
 
     composer require barryvdh/laravel-snappy
 
+### Laravel
+
 After updating composer, add the ServiceProvider to the providers array in app/config/app.php
 
     Barryvdh\Snappy\ServiceProvider::class,
@@ -28,6 +30,25 @@ You can optionally use the facade for shorter code. Add this to your facades:
 
     'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
     'Image' => Barryvdh\Snappy\Facades\SnappyImage::class,
+
+You can  publish the config-file to change some settings (default paper etc).
+
+    php artisan vendor:publish
+
+### Lumen
+In `bootstrap/app.php` add:
+   
+    class_alias('Barryvdh\Snappy\Facades\SnappyPdf', 'PDF');
+    $app->register(Barryvdh\Snappy\LumenServiceProvider::class);
+
+Optionally, add the facades like so:
+
+    class_alias(Barryvdh\Snappy\Facades\SnappyPdf::class, 'PDF');
+    class_alias(Barryvdh\Snappy\Facades\SnappyImage::class, 'Image');
+
+To customise the configuration file, copy the file `/vendor/barryvdh/laravel-snappy/config/snappy.php` to the `/config` folder.
+
+### Usage
 
 You can create a new Snappy PDF/Image instance and load a HTML string, file or view name. You can save it to a file, or inline (show in browser) or download.
 
@@ -67,10 +88,6 @@ You can change the orientation and paper size
     PDF::loadHTML($html)->setPaper('a4')->setOrientation('landscape')->setOption('margin-bottom', 0)->save('myfile.pdf')
 
 If you need the output as a string, you can get the rendered PDF with the output() function, so you can save/output it yourself.
-
-You can  publish the config-file to change some settings (default paper etc).
-
-    php artisan vendor:publish
 
 See the [wkhtmltopdf manual](http://wkhtmltopdf.org/usage/wkhtmltopdf.txt) for more information/settings.
 
