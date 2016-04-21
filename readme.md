@@ -34,6 +34,21 @@ You can optionally use the facade for shorter code. Add this to your facades:
 You can  publish the config-file to change some settings (default paper etc).
 
     php artisan vendor:publish
+    
+#### Homestead
+
+If you are using homestead for your Laravel development you might have the problem that the shipped version of wkhtmltopdf for Ubuntu is compiled with the need for an installed x-server.  
+
+However to avoid installing a complet x-server in your Homestead enviroment you could use xvfb (X virtual framebuffer).
+
+Steps to setup wkhtmltopdf in Homestead with xvfb:
+
+1. apt-get install wkhtmltopdf
+2. apt-get install xvfb
+3. echo -e '#!/bin/bash\nxvfb-run -a --server-args="-screen 0, 1920x1080x24" /usr/bin/wkhtmltopdf -q $*' > /usr/bin/wkhtmltopdf.sh; chmod a+x /usr/bin/wkhtmltopdf.sh; ln -s /usr/bin/wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf
+4. Test out making a PDF file: wkhtmltopdf http://www.google.com google.pdf
+
+This should now allow you to use wkhtmltopdf in Homestead without installing a complete x-server.
 
 ### Lumen
 In `bootstrap/app.php` add:
