@@ -43,12 +43,12 @@ However to avoid installing a complet x-server in your Homestead enviroment you 
 
 Steps to setup wkhtmltopdf in Homestead with xvfb:
 
-1. apt-get install wkhtmltopdf
-2. apt-get install xvfb
-3. echo -e '#!/bin/bash\nxvfb-run -a --server-args="-screen 0, 1920x1080x24" /usr/bin/wkhtmltopdf -q $*' > /usr/bin/wkhtmltopdf.sh; chmod a+x /usr/bin/wkhtmltopdf.sh; ln -s /usr/bin/wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf
-4. Test out making a PDF file: wkhtmltopdf http://www.google.com google.pdf
+1. `apt-get install wkhtmltopdf`
+2. `apt-get install xvfb`
+3. `echo -e '#!/bin/bash\nxvfb-run -a --server-args="-screen 0, 1920x1080x24" /usr/bin/wkhtmltopdf -q $*' > /usr/bin/wkhtmltopdf.sh; chmod a+x /usr/bin/wkhtmltopdf.sh; ln -s /usr/bin/wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf`
+4. Test out making a PDF file: `wkhtmltopdf https://www.google.com google.pdf` (This should leave you with a PDF file of the google frontpage).
 
-This should now allow you to use wkhtmltopdf in Homestead without installing a complete x-server.
+You should now be able to use wkhtmltopdf/laravel-snappy in Homestead without installing a complete x-server.
 
 ### Lumen
 In `bootstrap/app.php` add:
