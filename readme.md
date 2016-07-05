@@ -29,7 +29,7 @@ After updating composer, add the ServiceProvider to the providers array in app/c
 You can optionally use the facade for shorter code. Add this to your facades:
 
     'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
-    'Image' => Barryvdh\Snappy\Facades\SnappyImage::class,
+    'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
 
 You can  publish the config-file to change some settings (default paper etc).
 
