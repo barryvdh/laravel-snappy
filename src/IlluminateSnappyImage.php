@@ -1,6 +1,6 @@
 <?php namespace Barryvdh\Snappy;
 
-use Knp\Snappy\Image;
+use Knp\Snappy\Image as SnappyImage; /** Preventing conflict with Image facade **/
 use Illuminate\Filesystem\Filesystem;
 
 class IlluminateSnappyImage extends Image {
