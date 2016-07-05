@@ -29,7 +29,7 @@ After updating composer, add the ServiceProvider to the providers array in app/c
 You can optionally use the facade for shorter code. Add this to your facades:
 
     'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
-    'Image' => Barryvdh\Snappy\Facades\SnappyImage::class,
+    'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
 
 You can  publish the config-file to change some settings (default paper etc).
 
@@ -44,7 +44,7 @@ In `bootstrap/app.php` add:
 Optionally, add the facades like so:
 
     class_alias(Barryvdh\Snappy\Facades\SnappyPdf::class, 'PDF');
-    class_alias(Barryvdh\Snappy\Facades\SnappyImage::class, 'Image');
+    class_alias(Barryvdh\Snappy\Facades\SnappyImage::class, 'SnappyImage');
 
 To customise the configuration file, copy the file `/vendor/barryvdh/laravel-snappy/config/snappy.php` to the `/config` folder.
 
