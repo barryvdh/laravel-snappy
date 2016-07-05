@@ -44,7 +44,7 @@ In `bootstrap/app.php` add:
 Optionally, add the facades like so:
 
     class_alias(Barryvdh\Snappy\Facades\SnappyPdf::class, 'PDF');
-    class_alias(Barryvdh\Snappy\Facades\SnappyImage::class, 'Image');
+    class_alias(Barryvdh\Snappy\Facades\SnappyImage::class, 'SnappyImage');
 
 To customise the configuration file, copy the file `/vendor/barryvdh/laravel-snappy/config/snappy.php` to the `/config` folder.
 
