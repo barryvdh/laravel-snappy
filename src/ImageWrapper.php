@@ -147,6 +147,21 @@ class ImageWrapper {
      * Return a response with the image to show in the browser
      *
      * @param string $filename
+     * @return \Illuminate\Http\Response
+     */
+    public function inline($filename = 'image.jpg')
+    {
+        return new Response($this->output(), 200, array(
+            'Content-Type' => 'image/jpeg',
+            'Content-Disposition' => 'inline; filename="'.$filename.'"',
+        ));
+    }
+    
+    /**
+     * Return a response with the image to show in the browser
+     *
+     * @deprecated Use inline() instead
+     * @param string $filename
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function stream($filename = 'image.jpg')
