@@ -56,8 +56,9 @@ Using the App container:
 
     $snappy = App::make('snappy.pdf');
     //To file
-    $snappy->generateFromHtml('<h1>Bill</h1><p>You owe me money, dude.</p>', '/tmp/bill-123.pdf');
-    $snappy->generate('http://www.github.com', '/tmp/github.pdf'));
+    $html = '<h1>Bill</h1><p>You owe me money, dude.</p>';
+    $snappy->generateFromHtml($html, '/tmp/bill-123.pdf');
+    $snappy->generate('http://www.github.com', '/tmp/github.pdf');
     //Or output:
     return new Response(
         $snappy->getOutputFromHtml($html),
