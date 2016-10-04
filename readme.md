@@ -9,7 +9,7 @@ This package is a ServiceProvider for Snappy: [https://github.com/KnpLabs/snappy
 Choose one of the following options to install wkhtmltopdf/wkhtmltoimage.
 
 1. Download wkhtmltopdf from [here](http://wkhtmltopdf.org/downloads.html); 
-2. Or install as a composer dependencie (you should go this way). See [wkhtmltopdf binary as composer dependencies](https://github.com/KnpLabs/snappy#wkhtmltopdf-binary-as-composer-dependencies) for more information.
+2. Or install as a composer dependencie. See [wkhtmltopdf binary as composer dependencies](https://github.com/KnpLabs/snappy#wkhtmltopdf-binary-as-composer-dependencies) for more information.
 
 #### Attention! Please note that some dependencies (libXrender for example) may not be present on your system and may require manual installation. 
 
