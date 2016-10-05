@@ -64,7 +64,7 @@ For example, when loaded with composer, the line should look like:
     
 If you followed the vagrant steps, the line should look like:
 
-    'binary'  => '/usr/local/bin/wkhtmltopdf',
+    'binary'  => '/usr/local/bin/wkhtmltopdf-amd64',
 
 ### Lumen
 In `bootstrap/app.php` add:
