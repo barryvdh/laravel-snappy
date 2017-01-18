@@ -66,6 +66,10 @@ If you followed the vagrant steps, the line should look like:
 
     'binary'  => '/usr/local/bin/wkhtmltopdf-amd64',
 
+For windows users you'll have to add double quotes to the bin path for wkhtmltopdf:
+
+    'binary' => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf"'
+
 ### Lumen
 In `bootstrap/app.php` add:
    
