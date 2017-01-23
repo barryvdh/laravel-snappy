@@ -1,8 +1,9 @@
-<?php namespace Barryvdh\Snappy;
+<?php
+namespace Barryvdh\Snappy;
 
 use Illuminate\Http\Response;
-use Knp\Snappy\Pdf as SnappyPDF;
 use Illuminate\Support\Facades\View;
+use Knp\Snappy\Pdf as SnappyPDF;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
@@ -11,10 +12,11 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  * @package laravel-snappy
  * @author Barry vd. Heuvel
  */
-class PdfWrapper{
+class PdfWrapper
+{
 
     /**
-     * @var \Knp\Snappy\Pdf 
+     * @var \Knp\Snappy\Pdf
      */
     protected $snappy;
 
@@ -23,24 +25,23 @@ class PdfWrapper{
      */
     protected $options = array();
 
-
     /**
      * @param \Knp\Snappy\Pdf $snappy
      */
     public function __construct(SnappyPDF $snappy)
     {
-       $this->snappy = $snappy;
+        $this->snappy = $snappy;
     }
 
     /**
      * Get the Snappy instance.
-     * 
+     *
      * @return \Knp\Snappy\Pdf
      */
-     public function snappy()
-     {
-         return $this->snappy;
-     }
+    public function snappy()
+    {
+        return $this->snappy;
+    }
 
     /**
      * Set the paper size (default A4)
@@ -49,12 +50,36 @@ class PdfWrapper{
      * @param  string $orientation
      * @return $this
      */
-    public function setPaper($paper, $orientation=null)
+    public function setPaper($paper, $orientation = null)
     {
         $this->snappy->setOption('page-size', $paper);
-        if($orientation){
+        if ($orientation) {
             $this->snappy->setOption('orientation', $orientation);
         }
+        return $this;
+    }
+
+    /**
+     * Set the page width
+     *
+     * @param  string $width
+     * @return $this
+     */
+    public function setPageWidth($width)
+    {
+        $this->snappy->setOption('page-width', $width);
+        return $this;
+    }
+
+    /**
+     * Set the page height
+     *
+     * @param  string $height
+     * @return $this
+     */
+    public function setPageHeight($height)
+    {
+        $this->snappy->setOption('page-height', $height);
         return $this;
     }
 
@@ -146,24 +171,22 @@ class PdfWrapper{
     }
 
     /**
-	 * Output the PDF as a string.
-	 *
-	 * @return string The rendered PDF as string
-	 * @throws \InvalidArgumentException
-	 */
-	public function output()
-	{
-		if ($this->html)
-		{
-			return $this->snappy->getOutputFromHtml($this->html, $this->options);
-		}
+     * Output the PDF as a string.
+     *
+     * @return string The rendered PDF as string
+     * @throws \InvalidArgumentException
+     */
+    public function output()
+    {
+        if ($this->html) {
+            return $this->snappy->getOutputFromHtml($this->html, $this->options);
+        }
 
-		if ($this->file)
-		{
-			return $this->snappy->getOutput($this->file, $this->options);
-		}
+        if ($this->file) {
+            return $this->snappy->getOutput($this->file, $this->options);
+        }
 
-		throw new \InvalidArgumentException('PDF Generator requires a html or file in order to produce output.');
+        throw new \InvalidArgumentException('PDF Generator requires a html or file in order to produce output.');
     }
 
     /**
@@ -175,12 +198,9 @@ class PdfWrapper{
     public function save($filename, $overwrite = false)
     {
 
-        if ($this->html)
-        {
+        if ($this->html) {
             $this->snappy->generateFromHtml($this->html, $filename, $this->options, $overwrite);
-        }
-        elseif ($this->file)
-        {
+        } elseif ($this->file) {
             $this->snappy->generate($this->file, $filename, $this->options, $overwrite);
         }
 
@@ -197,7 +217,7 @@ class PdfWrapper{
     {
         return new Response($this->output(), 200, array(
             'Content-Type' => 'application/pdf',
-            'Content-Disposition' =>  'attachment; filename="'.$filename.'"'
+            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
         ));
     }
 
@@ -211,7 +231,7 @@ class PdfWrapper{
     {
         return new Response($this->output(), 200, array(
             'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="'.$filename.'"',
+            'Content-Disposition' => 'inline; filename="' . $filename . '"',
         ));
     }
 
@@ -224,22 +244,22 @@ class PdfWrapper{
      */
     public function stream($filename = 'document.pdf')
     {
-        return new StreamedResponse(function() {
+        return new StreamedResponse(function () {
             echo $this->output();
         }, 200, array(
             'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="'.$filename.'"',
+            'Content-Disposition' => 'inline; filename="' . $filename . '"',
         ));
     }
 
     /**
      * Call Snappy instance.
-     * 
+     *
      * Also shortcut's
      * ->html => loadHtml
      * ->view => loadView
      * ->file => loadFile
-     * 
+     *
      * @param string $name
      * @param array $arguments
      * @return mixed
@@ -247,12 +267,11 @@ class PdfWrapper{
     public function __call($name, array $arguments)
     {
         $method = 'load' . ucfirst($name);
-        if (method_exists($this, $method))
-        {
+        if (method_exists($this, $method)) {
             return call_user_func_array(array($this, $method), $arguments);
         }
-        
-        return call_user_func_array (array($this->snappy, $name), $arguments);
+
+        return call_user_func_array(array($this->snappy, $name), $arguments);
     }
 
 }
