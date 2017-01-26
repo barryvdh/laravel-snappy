@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 class PdfWrapper{
 
     /**
-     * @var \Knp\Snappy\Pdf 
+     * @var \Knp\Snappy\Pdf
      */
     protected $snappy;
 
@@ -34,12 +34,23 @@ class PdfWrapper{
 
     /**
      * Get the Snappy instance.
-     * 
+     *
      * @return \Knp\Snappy\Pdf
      */
      public function snappy()
      {
          return $this->snappy;
+     }
+
+    /**
+     * Set temporary folder
+     *
+     * @param  string $path
+     */
+     public function setTemporaryFolder($path)
+     {
+         $this->snappy->setTemporaryFolder($path);
+         return $this;
      }
 
     /**
@@ -234,12 +245,12 @@ class PdfWrapper{
 
     /**
      * Call Snappy instance.
-     * 
+     *
      * Also shortcut's
      * ->html => loadHtml
      * ->view => loadView
      * ->file => loadFile
-     * 
+     *
      * @param string $name
      * @param array $arguments
      * @return mixed
@@ -251,7 +262,7 @@ class PdfWrapper{
         {
             return call_user_func_array(array($this, $method), $arguments);
         }
-        
+
         return call_user_func_array (array($this->snappy, $name), $arguments);
     }
 
