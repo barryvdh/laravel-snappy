@@ -27,7 +27,7 @@ class LumenServiceProvider extends BaseServiceProvider
     public function boot()
     {
         if ($this->app['config']->get('snappy.pdf.enabled')) {
-            $this->app['snappy.pdf'] = $this->app->share(function ($app) {
+            $this->app['snappy.pdf'] = $this->app->singleton(function ($app) {
                 $binary = $app['config']->get('snappy.pdf.binary', '/usr/local/bin/wkhtmltopdf');
                 $options = $app['config']->get('snappy.pdf.options', array());
                 $env = $app['config']->get('snappy.pdf.env', array());
@@ -41,14 +41,14 @@ class LumenServiceProvider extends BaseServiceProvider
                 return $snappy;
             });
 
-            $this->app['snappy.pdf.wrapper'] = $this->app->share(function ($app) {
+            $this->app['snappy.pdf.wrapper'] = $this->app->singleton(function ($app) {
                 return new PdfWrapper($app['snappy.pdf']);
             });
             $this->app->alias('snappy.pdf.wrapper', 'Barryvdh\Snappy\PdfWrapper');
         }
 
         if ($this->app['config']->get('snappy.image.enabled')) {
-            $this->app['snappy.image'] = $this->app->share(function ($app) {
+            $this->app['snappy.image'] = $this->app->singleton(function ($app) {
                 $binary = $app['config']->get('snappy.image.binary', '/usr/local/bin/wkhtmltoimage');
                 $options = $app['config']->get('snappy.image.options', array());
                 $env = $app['config']->get('snappy.image.env', array());
@@ -62,7 +62,7 @@ class LumenServiceProvider extends BaseServiceProvider
                 return $image;
             });
 
-            $this->app['snappy.image.wrapper'] = $this->app->share(function ($app) {
+            $this->app['snappy.image.wrapper'] = $this->app->singleton(function ($app) {
                 return new ImageWrapper($app['snappy.image']);
             });
             $this->app->alias('snappy.image.wrapper', 'Barryvdh\Snappy\ImageWrapper');
