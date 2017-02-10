@@ -123,6 +123,10 @@ You can change the orientation and paper size
 
     PDF::loadHTML($html)->setPaper('a4')->setOrientation('landscape')->setOption('margin-bottom', 0)->save('myfile.pdf')
 
+You can also add a custom page width and height (in mm)
+
+    PDF::loadHTML($html)->setPageWidth(210)->setPageHeight(297)->save('myfile.pdf')
+
 If you need the output as a string, you can get the rendered PDF with the output() function, so you can save/output it yourself.
 
 See the [wkhtmltopdf manual](http://wkhtmltopdf.org/usage/wkhtmltopdf.txt) for more information/settings.
