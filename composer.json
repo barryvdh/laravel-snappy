@@ -23,6 +23,15 @@
     "extra": {
         "branch-alias": {
             "dev-master": "0.3-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Barryvdh\\Snappy\\ServiceProvider"
+            ],
+            "aliases": {
+                "PDF": "Barryvdh\\Snappy\\Facades\\SnappyPdf",
+                "SnappyImage": "Barryvdh\\Snappy\\Facades\\SnappyImage"
+            }
         }
     },
     "minimum-stability": "dev"
