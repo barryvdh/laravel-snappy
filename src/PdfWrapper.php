@@ -107,12 +107,12 @@ class PdfWrapper{
     /**
      * Load a HTML string
      *
-     * @param  string $string
+     * @param  Array|string $html
      * @return $this
      */
-    public function loadHTML($string)
+    public function loadHTML($html)
     {
-        $this->html = (string) $string;
+        $this->html = $html;
         $this->file = null;
         return $this;
     }
