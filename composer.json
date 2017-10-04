@@ -13,7 +13,7 @@
         "php": ">=5.4.0",
         "illuminate/support": "5.0.x|5.1.x|5.2.x|5.3.x|5.4.x|5.5.x",
         "illuminate/filesystem": "5.0.x|5.1.x|5.2.x|5.3.x|5.4.x|5.5.x",
-        "knplabs/knp-snappy": "*"
+        "knplabs/knp-snappy": "^1"
     },
     "autoload": {
         "psr-4": {
