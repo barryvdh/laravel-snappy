@@ -3,6 +3,7 @@
 use Illuminate\Http\Response;
 use Knp\Snappy\Pdf as SnappyPDF;
 use Illuminate\Support\Facades\View;
+use Illuminate\Contracts\Support\Renderable;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
@@ -90,6 +91,9 @@ class PdfWrapper{
      */
     public function setOption($name, $value)
     {
+        if ($value instanceof Renderable) {
+            $value = $value->render();
+        }
         $this->snappy->setOption($name, $value);
         return $this;
     }
@@ -107,11 +111,14 @@ class PdfWrapper{
     /**
      * Load a HTML string
      *
-     * @param  Array|string $html
+     * @param  Array|string|Renderable $html
      * @return $this
      */
     public function loadHTML($html)
     {
+        if ($html instanceof Renderable) {
+            $html = $html->render();
+        }
         $this->html = $html;
         $this->file = null;
         return $this;
@@ -140,9 +147,9 @@ class PdfWrapper{
      */
     public function loadView($view, $data = array(), $mergeData = array())
     {
-        $this->html = View::make($view, $data, $mergeData)->render();
-        $this->file = null;
-        return $this;
+	$view = View::make($view, $data, $mergeData);
+
+	return $this->loadHTML($view);
     }
 
     /**
