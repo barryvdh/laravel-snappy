@@ -125,7 +125,7 @@ You can change the orientation and paper size
 
 If you need the output as a string, you can get the rendered PDF with the output() function, so you can save/output it yourself.
 
-See the [wkhtmltopdf manual](http://wkhtmltopdf.org/usage/wkhtmltopdf.txt) for more information/settings.
+See the [wkhtmltopdf manual](https://madalgo.au.dk/~jakobt/wkhtmltoxdoc/wkhtmltopdf-0.9.9-doc.html) for more information/settings.
 
 ### License
 
