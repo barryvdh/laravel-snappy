@@ -67,7 +67,7 @@ class ServiceProvider extends BaseServiceProvider {
                 return $image;
             });
 
-            $this->app->singleton('snappy.image.wrapper', function($app)
+            $this->app->bind('snappy.image.wrapper', function($app)
             {
                 return new ImageWrapper($app['snappy.image']);
             });
