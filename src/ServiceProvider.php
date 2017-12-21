@@ -26,9 +26,9 @@ class ServiceProvider extends BaseServiceProvider {
     {
         $configPath = __DIR__ . '/../config/snappy.php';
         $this->publishes([$configPath => config_path('snappy.php')], 'config');
-        
+
         if($this->app['config']->get('snappy.pdf.enabled')){
-            $this->app->singleton('snappy.pdf', function($app)
+            $this->app->bind('snappy.pdf', function($app)
             {
                 $binary = $app['config']->get('snappy.pdf.binary', '/usr/local/bin/wkhtmltopdf');
                 $options = $app['config']->get('snappy.pdf.options', array());
@@ -43,7 +43,7 @@ class ServiceProvider extends BaseServiceProvider {
                 return $snappy;
             });
 
-            $this->app->singleton('snappy.pdf.wrapper', function($app)
+            $this->app->bind('snappy.pdf.wrapper', function($app)
             {
                 return new PdfWrapper($app['snappy.pdf']);
             });
@@ -52,7 +52,7 @@ class ServiceProvider extends BaseServiceProvider {
 
 
         if($this->app['config']->get('snappy.image.enabled')){
-            $this->app->singleton('snappy.image', function($app)
+            $this->app->bind('snappy.image', function($app)
             {
                 $binary = $app['config']->get('snappy.image.binary', '/usr/local/bin/wkhtmltoimage');
                 $options = $app['config']->get('snappy.image.options', array());
@@ -67,7 +67,7 @@ class ServiceProvider extends BaseServiceProvider {
                 return $image;
             });
 
-            $this->app->singleton('snappy.image.wrapper', function($app)
+            $this->app->bind('snappy.image.wrapper', function($app)
             {
                 return new ImageWrapper($app['snappy.image']);
             });
