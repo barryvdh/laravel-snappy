@@ -23,13 +23,17 @@ If you went for the second option the binaries will be at `/vendor/h4cc/wkhtmlto
 
 Move the binaries to a path that is not in a synced folder, for example:
 
-    cp vendor/h4cc/wkhtmltoimage-amd64/bin/wkhtmltoimage-amd64 /usr/local/bin/
-    cp vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64 /usr/local/bin/
+```bash
+cp vendor/h4cc/wkhtmltoimage-amd64/bin/wkhtmltoimage-amd64 /usr/local/bin/
+cp vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64 /usr/local/bin/
+```
 
 and make it executable:
 
-    chmod +x /usr/local/bin/wkhtmltoimage-amd64 
-    chmod +x /usr/local/bin/wkhtmltopdf-amd64
+```bash
+chmod +x /usr/local/bin/wkhtmltoimage-amd64 
+chmod +x /usr/local/bin/wkhtmltopdf-amd64
+```
 
 This will prevent the error 126.
 
@@ -37,22 +41,30 @@ This will prevent the error 126.
 
 Require this package in your composer.json and update composer.
 
-    composer require barryvdh/laravel-snappy
+```bash
+composer require barryvdh/laravel-snappy
+```
 
 ### Laravel
 
 After updating composer, add the ServiceProvider to the providers array in config/app.php
 
-    Barryvdh\Snappy\ServiceProvider::class,
+```php
+Barryvdh\Snappy\ServiceProvider::class,
+```
 
 Optionally you can use the Facade for shorter code. Add this to your facades:
 
-    'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
-    'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+```php
+'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+```
 
 Finally you can publish the config file:
 
-    php artisan vendor:publish --provider="Barryvdh\Snappy\ServiceProvider"
+```bash
+php artisan vendor:publish --provider="Barryvdh\Snappy\ServiceProvider"
+```
 
 ### Snappy config file
 
@@ -60,26 +72,36 @@ The main change to this config file (config/snappy.php) will be the path to the 
 
 For example, when loaded with composer, the line should look like:
 
-    'binary' => base_path('vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64'),
-    
+```php
+'binary' => base_path('vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64'),
+```
+
 If you followed the vagrant steps, the line should look like:
 
-    'binary'  => '/usr/local/bin/wkhtmltopdf-amd64',
+```php
+'binary'  => '/usr/local/bin/wkhtmltopdf-amd64',
+```
 
 For windows users you'll have to add double quotes to the bin path for wkhtmltopdf:
 
-    'binary' => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf"'
+```php
+'binary' => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf"'
+```
 
 ### Lumen
 In `bootstrap/app.php` add:
-   
-    class_alias('Barryvdh\Snappy\Facades\SnappyPdf', 'PDF');
-    $app->register(Barryvdh\Snappy\LumenServiceProvider::class);
+
+```php
+class_alias('Barryvdh\Snappy\Facades\SnappyPdf', 'PDF');
+$app->register(Barryvdh\Snappy\LumenServiceProvider::class);
+```
 
 Optionally, add the facades like so:
 
-    class_alias(Barryvdh\Snappy\Facades\SnappyPdf::class, 'PDF');
-    class_alias(Barryvdh\Snappy\Facades\SnappyImage::class, 'SnappyImage');
+```php
+class_alias(Barryvdh\Snappy\Facades\SnappyPdf::class, 'PDF');
+class_alias(Barryvdh\Snappy\Facades\SnappyImage::class, 'SnappyImage');
+```
 
 To customise the configuration file, copy the file `/vendor/barryvdh/laravel-snappy/config/snappy.php` to the `/config` folder.
 
@@ -89,39 +111,49 @@ You can create a new Snappy PDF/Image instance and load a HTML string, file or v
 
 Using the App container:
 
-    $snappy = App::make('snappy.pdf');
-    //To file
-    $html = '<h1>Bill</h1><p>You owe me money, dude.</p>';
-    $snappy->generateFromHtml($html, '/tmp/bill-123.pdf');
-    $snappy->generate('http://www.github.com', '/tmp/github.pdf');
-    //Or output:
-    return new Response(
-        $snappy->getOutputFromHtml($html),
-        200,
-        array(
-            'Content-Type'          => 'application/pdf',
-            'Content-Disposition'   => 'attachment; filename="file.pdf"'
-        )
-    );
+```php
+$snappy = App::make('snappy.pdf');
+//To file
+$html = '<h1>Bill</h1><p>You owe me money, dude.</p>';
+$snappy->generateFromHtml($html, '/tmp/bill-123.pdf');
+$snappy->generate('http://www.github.com', '/tmp/github.pdf');
+//Or output:
+return new Response(
+    $snappy->getOutputFromHtml($html),
+    200,
+    array(
+        'Content-Type'          => 'application/pdf',
+        'Content-Disposition'   => 'attachment; filename="file.pdf"'
+    )
+);
+```
 
 Using the wrapper:
 
-    $pdf = App::make('snappy.pdf.wrapper');
-    $pdf->loadHTML('<h1>Test</h1>');
-    return $pdf->inline();
+```php
+$pdf = App::make('snappy.pdf.wrapper');
+$pdf->loadHTML('<h1>Test</h1>');
+return $pdf->inline();
+```
 
 Or use the facade:
 
-    $pdf = PDF::loadView('pdf.invoice', $data);
-    return $pdf->download('invoice.pdf');
+```php
+$pdf = PDF::loadView('pdf.invoice', $data);
+return $pdf->download('invoice.pdf');
+```
 
 You can chain the methods:
 
-    return PDF::loadFile('http://www.github.com')->inline('github.pdf');
+```php
+return PDF::loadFile('http://www.github.com')->inline('github.pdf');
+```
 
 You can change the orientation and paper size
 
-    PDF::loadHTML($html)->setPaper('a4')->setOrientation('landscape')->setOption('margin-bottom', 0)->save('myfile.pdf')
+```php
+PDF::loadHTML($html)->setPaper('a4')->setOrientation('landscape')->setOption('margin-bottom', 0)->save('myfile.pdf')
+```
 
 If you need the output as a string, you can get the rendered PDF with the output() function, so you can save/output it yourself.
 
