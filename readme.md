@@ -47,6 +47,8 @@ composer require barryvdh/laravel-snappy
 
 ### Laravel
 
+**Laravel 5.5** uses Package Auto-Discovery, so doesn't require you to manually add the ServiceProvider/Facade.
+
 After updating composer, add the ServiceProvider to the providers array in config/app.php
 
 ```php
