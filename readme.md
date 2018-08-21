@@ -138,7 +138,7 @@ $pdf->loadHTML('<h1>Test</h1>');
 return $pdf->inline();
 ```
 
-Or use the facade:
+Or use the facade (please note that the template file must be in "resources/views", and must end with ".blade.php") :
 
 ```php
 $pdf = PDF::loadView('pdf.invoice', $data);
