@@ -47,7 +47,7 @@ composer require barryvdh/laravel-snappy
 
 ### Laravel
 
-**Laravel 5.5** uses Package Auto-Discovery, so doesn't require you to manually add the ServiceProvider/Facade.
+**Laravel 5.5** uses Package Auto-Discovery, so doesn't require you to manually add the ServiceProvider/Facade. If you also use laravel-dompdf, watch out for conflicts. It could be better to manually register the Facade.
 
 After updating composer, add the ServiceProvider to the providers array in config/app.php
 
