@@ -130,7 +130,7 @@ class PdfWrapper{
         if ($html instanceof Renderable) {
             $html = $html->render();
         }
-        $this->html = $html;
+        $this->html[] = $html;
         $this->file = null;
         return $this;
     }
