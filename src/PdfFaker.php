@@ -1,4 +1,4 @@
-<?php
+<?php namespace Barryvdh\Snappy;
 
 use PHPUnit\Framework\Assert as PHPUnit;
 
