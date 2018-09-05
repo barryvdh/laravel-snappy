@@ -1,5 +1,6 @@
 <?php
 
+use Barryvdh\Snappy\PdfWrapper;
 use PHPUnit\Framework\Assert as PHPUnit;
 
 class PdfFaker extends PdfWrapper
