@@ -1,5 +1,6 @@
 <?php namespace Barryvdh\Snappy;
 
+use Illuminate\Support\Facades\View;
 use PHPUnit\Framework\Assert as PHPUnit;
 
 class PdfFaker extends PdfWrapper
