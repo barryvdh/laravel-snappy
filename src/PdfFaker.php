@@ -1,7 +1,9 @@
 <?php namespace Barryvdh\Snappy;
 
-use Illuminate\Support\Facades\View;
+use Illuminate\View\View;
 use PHPUnit\Framework\Assert as PHPUnit;
+use Illuminate\Support\Facades\View as ViewFacade;
+
 
 class PdfFaker extends PdfWrapper
 {
@@ -17,7 +19,7 @@ class PdfFaker extends PdfWrapper
      */
     public function loadView($view, $data = array(), $mergeData = array())
     {
-        $this->view = View::make($view, $data, $mergeData);
+        $this->view = ViewFacade::make($view, $data, $mergeData);
         return parent::loadView($view, $data, $mergeData);
     }
 
