@@ -60,7 +60,7 @@ class PdfFaker extends PdfWrapper
 
         if (is_null($value)) {
             PHPUnit::assertArrayHasKey($key, $this->view->getData());
-        } elseif ($value instanceof Closure) {
+        } elseif ($value instanceof \Closure) {
             PHPUnit::assertTrue($value($this->view->$key));
         } else {
             PHPUnit::assertEquals($value, $this->view->$key);
