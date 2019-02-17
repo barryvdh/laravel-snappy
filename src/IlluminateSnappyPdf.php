@@ -50,7 +50,7 @@ class IlluminateSnappyPdf extends Pdf {
      */
     protected function isFile($filename)
     {
-        return $this->fs->isFile($filename);
+        return strlen($filename) <= PHP_MAXPATHLEN && $this->fs->isFile($filename);
     }
 
     /**
