@@ -1,6 +1,6 @@
 {
     "name": "barryvdh/laravel-snappy",
-    "description": "Snappy PDF/Image for Laravel 4",
+    "description": "Snappy PDF/Image for Laravel",
     "keywords": ["laravel","snappy", "pdf", "image", "wkhtmltopdf", "wkhtmltoimage"],
     "license": "MIT",
     "authors": [
