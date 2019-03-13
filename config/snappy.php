@@ -27,6 +27,10 @@ return [
     |    The wkhtmltopdf command options. These are passed directly to wkhtmltopdf.
     |    See https://wkhtmltopdf.org/usage/wkhtmltopdf.txt for all options.
     |
+    | Env:
+    |
+    |    The environment variables to set while running the wkhtmltopdf process.
+    |
     */
     
     'pdf' => [
