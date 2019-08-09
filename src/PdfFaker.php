@@ -6,6 +6,7 @@ use PHPUnit\Framework\Assert as PHPUnit;
 class PdfFaker extends PdfWrapper
 {
 	protected $view;
+	protected $filename;
 
 	/**
      * Load a View and convert to HTML
@@ -154,6 +155,19 @@ class PdfFaker extends PdfWrapper
 
         return $this;
     }
+    
+    /**
+     * Assert that the given string is equal to the saved filename.
+     *
+     * @param  string  $value
+     * @return $this
+     */
+    public function assertFileNameIs($value)
+    {
+    	PHPUnit::assertEquals($value, $this->filename);
+
+    	return $this;
+    }
 
     public function output()
     {
@@ -275,6 +289,7 @@ startxref
      */
     public function save($filename, $overwrite = false)
     {
+	$this->filename = $filename;
         return $this;
     }
 }
