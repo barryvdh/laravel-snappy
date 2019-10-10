@@ -160,7 +160,8 @@ PDF::loadHTML($html)->setPaper('a4')->setOrientation('landscape')->setOption('ma
 If you need the output as a string, you can get the rendered PDF with the output() function, so you can save/output it yourself.
 
 See the [wkhtmltopdf manual](http://wkhtmltopdf.org/usage/wkhtmltopdf.txt) for more information/settings.
-### Testing PHPUnit
+
+### Testing - PDF fake
 
 As an alternative to mocking, you may use the `PDF` facade's `fake` method. When using fakes, assertions are made after the code under test is executed:
 
@@ -186,7 +187,8 @@ class ExampleTest extends TestCase
 }
 ```
 
-Lists other assetions:
+#### Other available assertions:
+
 ```php
 PDF::assertViewIs($value);
 PDF::assertViewHas($key, $value = null);
