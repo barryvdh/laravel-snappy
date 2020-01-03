@@ -114,7 +114,7 @@ class PdfFaker extends PdfWrapper
      */
     public function assertSee($value)
     {
-        PHPUnit::assertContains($value, $this->html);
+        PHPUnit::assertStringContainsString($value, $this->html);
 
         return $this;
     }
@@ -127,7 +127,7 @@ class PdfFaker extends PdfWrapper
      */
     public function assertSeeText($value)
     {
-        PHPUnit::assertContains($value, strip_tags($this->html));
+        PHPUnit::assertStringContainsString($value, strip_tags($this->html));
 
         return $this;
     }
@@ -140,7 +140,7 @@ class PdfFaker extends PdfWrapper
      */
     public function assertDontSee($value)
     {
-        PHPUnit::assertNotContains($value, $this->html);
+        PHPUnit::assertStringNotContainsString($value, $this->html);
 
         return $this;
     }
@@ -153,7 +153,7 @@ class PdfFaker extends PdfWrapper
      */
     public function assertDontSeeText($value)
     {
-        PHPUnit::assertNotContains($value, strip_tags($this->html));
+        PHPUnit::assertStringNotContainsString($value, strip_tags($this->html));
 
         return $this;
     }
