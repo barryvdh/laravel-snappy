@@ -17,10 +17,11 @@ return [
     |    
     |    The file path of the wkhtmltopdf / wkhtmltoimage executable.
     |
-    | Timout:
+    | Timeout:
     |    
     |    The amount of time to wait (in seconds) before PDF / Image generation is stopped.
-    |    Setting this to false disables the timeout (unlimited processing time).
+    |    Setting this to null disables the timeout (unlimited processing time).
+    |    Setting this to false uses the default timeout from the Symfony\Component\Process\Process class (60 seconds).
     |
     | Options:
     |
