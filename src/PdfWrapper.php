@@ -3,6 +3,7 @@
 use Illuminate\Http\Response;
 use Knp\Snappy\Pdf as SnappyPDF;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Support\Renderable;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -213,10 +214,11 @@ class PdfWrapper{
      */
     public function download($filename = 'document.pdf')
     {
-        return new Response($this->output(), 200, array(
-            'Content-Type' => 'application/pdf',
-            'Content-Disposition' =>  'attachment; filename="'.$filename.'"'
-        ));
+        Storage::put($filename, $this->output());
+
+        return response()
+            ->download(Storage::path('/').$filename)
+            ->deleteFileAfterSend();
     }
 
     /**
