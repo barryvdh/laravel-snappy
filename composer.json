@@ -11,8 +11,8 @@
     ],
     "require": {
         "php": ">=7",
-        "illuminate/support": "5.5.x|5.6.x|5.7.x|5.8.x|6.*",
-        "illuminate/filesystem": "5.5.x|5.6.x|5.7.x|5.8.x|6.*",
+        "illuminate/support": "^5.5|^6|^7",
+        "illuminate/filesystem": "^5.5|^6|^7",
         "knplabs/knp-snappy": "^1"
     },
     "autoload": {
