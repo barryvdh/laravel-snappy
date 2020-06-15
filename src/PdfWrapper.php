@@ -215,7 +215,8 @@ class PdfWrapper{
     {
         return new Response($this->output(), 200, array(
             'Content-Type' => 'application/pdf',
-            'Content-Disposition' =>  'attachment; filename="'.$filename.'"'
+            'Content-Disposition' =>  'attachment; filename="'.$filename.'"',
+            'X-Vapor-Base64-Encode' => 'True'
         ));
     }
 
@@ -230,6 +231,7 @@ class PdfWrapper{
         return new Response($this->output(), 200, array(
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'inline; filename="'.$filename.'"',
+            'X-Vapor-Base64-Encode' => 'True'
         ));
     }
 
@@ -247,6 +249,7 @@ class PdfWrapper{
         }, 200, array(
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'inline; filename="'.$filename.'"',
+            'X-Vapor-Base64-Encode' => 'True'
         ));
     }
 

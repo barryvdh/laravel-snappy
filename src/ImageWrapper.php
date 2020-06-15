@@ -139,7 +139,8 @@ class ImageWrapper {
     {
         return new Response($this->output(), 200, array(
             'Content-Type' => 'image/jpeg',
-            'Content-Disposition' =>  'attachment; filename="'.$filename.'"'
+            'Content-Disposition' =>  'attachment; filename="'.$filename.'"',
+            'X-Vapor-Base64-Encode' => 'True'
         ));
     }
 
@@ -154,6 +155,7 @@ class ImageWrapper {
         return new Response($this->output(), 200, array(
             'Content-Type' => 'image/jpeg',
             'Content-Disposition' => 'inline; filename="'.$filename.'"',
+            'X-Vapor-Base64-Encode' => 'True'
         ));
     }
     
@@ -171,6 +173,7 @@ class ImageWrapper {
         }, 200, array(
             'Content-Type' => 'image/jpeg',
             'Content-Disposition' => 'inline; filename="'.$filename.'"',
+            'X-Vapor-Base64-Encode' => 'True'
         ));
     }
 
