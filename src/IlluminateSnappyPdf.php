@@ -24,7 +24,7 @@ class IlluminateSnappyPdf extends Pdf {
      *
      * @return string
      */
-    protected function getFileContents($filename)
+    protected function getFileContents($filename) : string
     {
         return $this->fs->get($filename);
     }
@@ -36,7 +36,7 @@ class IlluminateSnappyPdf extends Pdf {
      *
      * @return boolean
      */
-    protected function fileExists($filename)
+    protected function fileExists($filename) : bool
     {
         return $this->fs->exists($filename);
     }
@@ -48,7 +48,7 @@ class IlluminateSnappyPdf extends Pdf {
      *
      * @return boolean
      */
-    protected function isFile($filename)
+    protected function isFile($filename) : bool
     {
         return strlen($filename) <= PHP_MAXPATHLEN && $this->fs->isFile($filename);
     }
@@ -60,7 +60,7 @@ class IlluminateSnappyPdf extends Pdf {
      *
      * @return integer or FALSE on failure
      */
-    protected function filesize($filename)
+    protected function filesize($filename) : int
     {
         return $this->fs->size($filename);
     }
@@ -72,7 +72,7 @@ class IlluminateSnappyPdf extends Pdf {
      *
      * @return boolean
      */
-    protected function unlink($filename)
+    protected function unlink($filename) : bool
     {
         return $this->fs->delete($filename);
     }
@@ -84,7 +84,7 @@ class IlluminateSnappyPdf extends Pdf {
      *
      * @return boolean
      */
-    protected function isDir($filename)
+    protected function isDir($filename) : bool
     {
         return $this->fs->isDirectory($filename);
     }
@@ -96,7 +96,7 @@ class IlluminateSnappyPdf extends Pdf {
      *
      * @return boolean
      */
-    protected function mkdir($pathname)
+    protected function mkdir($pathname) : bool
     {
         return $this->fs->makeDirectory($pathname, 0777, true, true);
     }
