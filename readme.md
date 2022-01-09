@@ -1,4 +1,4 @@
-## Snappy PDF/Image Wrapper for Laravel 5 and Lumen 5.1
+## Snappy PDF/Image Wrapper for Laravel
 
 This package is a ServiceProvider for Snappy: [https://github.com/KnpLabs/snappy](https://github.com/KnpLabs/snappy).
 
