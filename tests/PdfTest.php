@@ -56,6 +56,18 @@ class PdfTest extends TestCase
         $this->assertEquals('inline; filename="test.pdf"', $response->headers->get('Content-Disposition'));
     }
 
+    public function testInline(): void
+    {
+        $pdf = SnappyPdf::loadHtml('<h1>Test</h1>');
+        /** @var Response $response */
+        $response = $pdf->inline('test.pdf');
+
+        $this->assertInstanceOf(Response::class, $response);
+        $this->assertNotEmpty($response->getContent());
+        $this->assertEquals('application/pdf', $response->headers->get('Content-Type'));
+        $this->assertEquals('inline; filename="test.pdf"', $response->headers->get('Content-Disposition'));
+    }
+
     public function testView(): void
     {
         $pdf = SnappyPdf::loadView('test');

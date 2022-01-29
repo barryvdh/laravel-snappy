@@ -234,20 +234,14 @@ class PdfWrapper{
     }
 
     /**
-     * Return a response with the PDF to show in the browser
+     * Alias from inline()
      *
      * @param string $filename
-     * @return \Symfony\Component\HttpFoundation\StreamedResponse
-     * @deprecated use inline() instead
+     * @return \Illuminate\Http\Response
      */
     public function stream($filename = 'document.pdf')
     {
-        return new StreamedResponse(function() {
-            echo $this->output();
-        }, 200, array(
-            'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="'.$filename.'"',
-        ));
+        return $this->inline($filename);
     }
 
     /**
