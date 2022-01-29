@@ -41,17 +41,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install wkthtmltopdf
+        run: |
+        sudo apt-get install -y xfonts-base xfonts-75dpi
+        wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
+        sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           coverage: none
           extensions: mbstring
-
-      - name: Install wkthtmltopdf
-        run: |
-          sudo mv .github/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
-          sudo chmod +x /usr/local/bin/wkhtmltopdf
 
       - name: Install dependencies
         run: |
