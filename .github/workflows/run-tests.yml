@@ -51,6 +51,7 @@ jobs:
       - name: Install wkthtmltopdf
         run: |
           sudo mv .github/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
+          sudo chmod +x /usr/local/bin/wkhtmltopdf
 
       - name: Install dependencies
         run: |
