@@ -16,7 +16,6 @@ use Barryvdh\Snappy\PdfFaker;
  * @method static \Barryvdh\Snappy\PdfWrapper save()
  * @method static \Illuminate\Http\Response download($filename = 'document.pdf')
  * @method static \Illuminate\Http\Response inline($filename = 'document.pdf')
- * @method static \Symfony\Component\HttpFoundation\StreamedResponse stream($filename = 'document.pdf')
  *
  */
 class SnappyPdf extends BaseFacade {
