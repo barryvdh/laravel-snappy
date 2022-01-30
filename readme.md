@@ -1,4 +1,9 @@
 ## Snappy PDF/Image Wrapper for Laravel
+[![Tests](https://github.com/barryvdh/laravel-snappy/workflows/Tests/badge.svg)](https://github.com/barryvdh/laravel-snappy/actions)
+[![Packagist License](https://poser.pugx.org/barryvdh/laravel-snappy/license.png)](http://choosealicense.com/licenses/mit/)
+[![Latest Stable Version](https://poser.pugx.org/barryvdh/laravel-snappy/version.png)](https://packagist.org/packages/barryvdh/laravel-snappy)
+[![Total Downloads](https://poser.pugx.org/barryvdh/laravel-snappy/d/total.png)](https://packagist.org/packages/barryvdh/laravel-snappy)
+[![Fruitcake](https://img.shields.io/badge/Powered%20By-Fruitcake-b2bc35.svg)](https://fruitcake.nl/)
 
 This package is a ServiceProvider for Snappy: [https://github.com/KnpLabs/snappy](https://github.com/KnpLabs/snappy).
 
