@@ -74,7 +74,7 @@ class IlluminateSnappyPdf extends Pdf {
      */
     protected function unlink($filename)
     {
-        return $this->fs->delete($filename);
+        return $this->fileExists($filename) && $this->fs->delete($filename);
     }
 
     /**
