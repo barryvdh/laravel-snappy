@@ -17,6 +17,16 @@ use Barryvdh\Snappy\PdfFaker;
  * @method static \Illuminate\Http\Response download($filename = 'document.pdf')
  * @method static \Illuminate\Http\Response inline($filename = 'document.pdf')
  *
+ * @method static \Barryvdh\Snappy\PdfFaker ensureResponseHasView() Only available when using ::fake()
+ * @method static \Barryvdh\Snappy\PdfFaker assertViewIs(string $value) Only available when using ::fake()
+ * @method static \Barryvdh\Snappy\PdfFaker assertViewHas(string|array $key, mixed $value = null) Only available when using ::fake()
+ * @method static \Barryvdh\Snappy\PdfFaker assertViewHasAll(array $bindings) Only available when using ::fake()
+ * @method static \Barryvdh\Snappy\PdfFaker assertViewMissing(string $key) Only available when using ::fake()
+ * @method static \Barryvdh\Snappy\PdfFaker assertSee(string $value) Only available when using ::fake()
+ * @method static \Barryvdh\Snappy\PdfFaker assertSeeText(string $value) Only available when using ::fake()
+ * @method static \Barryvdh\Snappy\PdfFaker assertDontSee(string $value) Only available when using ::fake()
+ * @method static \Barryvdh\Snappy\PdfFaker assertDontSeeText(string $value) Only available when using ::fake()
+ * @method static \Barryvdh\Snappy\PdfFaker assertFileNameIs(string $value) Only available when using ::fake()
  */
 class SnappyPdf extends BaseFacade {
 
