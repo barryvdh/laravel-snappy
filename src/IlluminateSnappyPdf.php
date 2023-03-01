@@ -4,6 +4,10 @@ use Knp\Snappy\Pdf;
 use Illuminate\Filesystem\Filesystem;
 
 class IlluminateSnappyPdf extends Pdf {
+    /**
+     * @var \Illuminate\Filesystem\Filesystem
+     */
+	protected $fs;
 
 	/**
 	 * @param \Illuminate\Filesystem\Filesystem
