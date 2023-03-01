@@ -23,7 +23,16 @@ class PdfWrapper{
      * @var array
      */
     protected $options = array();
+    
+    /**
+     * @var string
+     */
+    protected $html;
 
+    /**
+     * @var string
+     */
+    protected $file;
 
     /**
      * @param \Knp\Snappy\Pdf $snappy
