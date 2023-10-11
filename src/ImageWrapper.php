@@ -23,6 +23,15 @@ class ImageWrapper {
      */
     protected $options = array();
 
+    /**
+     * @var string
+     */
+    protected $html;
+
+    /**
+     * @var string
+     */
+    protected $file;
 
     /**
      * @param \Knp\Snappy\Image $snappy

@@ -4,6 +4,10 @@ use Knp\Snappy\Image;
 use Illuminate\Filesystem\Filesystem;
 
 class IlluminateSnappyImage extends Image {
+    /**
+     * @var \Illuminate\Filesystem\Filesystem
+     */
+    protected $fs;
 
 	/**
 	 * @param \Illuminate\Filesystem\Filesystem
