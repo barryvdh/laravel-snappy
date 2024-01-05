@@ -13,7 +13,7 @@
         "php": ">=7.2",
         "illuminate/support": "^9|^10",
         "illuminate/filesystem": "^9|^10",
-        "knplabs/knp-snappy": "^1.4"
+        "knplabs/knp-snappy": "^1.4.4"
     },
     "require-dev": {
         "orchestra/testbench": "^7|^8"
