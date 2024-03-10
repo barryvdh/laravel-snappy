@@ -3,7 +3,7 @@
 use Illuminate\View\View;
 use PHPUnit\Framework\Assert as PHPUnit;
 use Illuminate\Support\Facades\View as ViewFacade;
-
+use Illuminate\Testing\Constraints\SeeInOrder;
 
 class PdfFaker extends PdfWrapper
 {
@@ -120,6 +120,22 @@ class PdfFaker extends PdfWrapper
     }
 
     /**
+     * Assert that the given strings are contained in order within the response.
+     *
+     * @param  array  $values
+     * @param  bool  $escape
+     * @return $this
+     */
+    public function assertSeeInOrder($values, $escape = true)
+    {
+        $values = $escape ? array_map('e', ($values)) : $values;
+
+        PHPUnit::assertThat($values, new SeeInOrder($this->html));
+
+        return $this;
+    }
+
+    /**
      * Assert that the given string is contained within the response text.
      *
      * @param  string  $value
@@ -128,6 +144,22 @@ class PdfFaker extends PdfWrapper
     public function assertSeeText($value)
     {
         PHPUnit::assertStringContainsString($value, strip_tags($this->html));
+
+        return $this;
+    }
+
+    /**
+     * Assert that the given strings are contained in order within the response text.
+     *
+     * @param  array  $values
+     * @param  bool  $escape
+     * @return $this
+     */
+    public function assertSeeTextInOrder($values, $escape = true)
+    {
+        $values = $escape ? array_map('e', ($values)) : $values;
+
+        PHPUnit::assertThat($values, new SeeInOrder(strip_tags($this->html)));
 
         return $this;
     }
@@ -157,7 +189,7 @@ class PdfFaker extends PdfWrapper
 
         return $this;
     }
-    
+
     /**
      * Assert that the given string is equal to the saved filename.
      *
@@ -260,21 +292,21 @@ endobj
 endobj
 xref
 0 15
-0000000000 65535 f 
-0000003414 00000 n 
-0000000187 00000 n 
-0000003133 00000 n 
-0000000022 00000 n 
-0000000169 00000 n 
-0000000297 00000 n 
-0000003098 00000 n 
-0000000365 00000 n 
-0000003078 00000 n 
-0000003222 00000 n 
-0000003272 00000 n 
-0000003295 00000 n 
-0000003348 00000 n 
-0000003372 00000 n 
+0000000000 65535 f
+0000003414 00000 n
+0000000187 00000 n
+0000003133 00000 n
+0000000022 00000 n
+0000000169 00000 n
+0000000297 00000 n
+0000003098 00000 n
+0000000365 00000 n
+0000003078 00000 n
+0000003222 00000 n
+0000003272 00000 n
+0000003295 00000 n
+0000003348 00000 n
+0000003372 00000 n
 trailer
 << /Size 15 /Root 10 0 R /Info 1 0 R /ID [ <ea5d2c625a19688ce1ff05174d8a0261>
 <ea5d2c625a19688ce1ff05174d8a0261> ] >>
