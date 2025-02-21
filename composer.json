@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
+        "php": "^8.1",
         "illuminate/support": "^9|^10|^11|^12",
         "illuminate/filesystem": "^9|^10|^11|^12",
         "knplabs/knp-snappy": "^1.4.4"
