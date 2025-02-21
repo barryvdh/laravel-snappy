@@ -18,12 +18,12 @@
     ],
     "require": {
         "php": ">=7.2",
-        "illuminate/support": "^9|^10|^11.0",
-        "illuminate/filesystem": "^9|^10|^11.0",
+        "illuminate/support": "^9|^10|^11|^12",
+        "illuminate/filesystem": "^9|^10|^11|^12",
         "knplabs/knp-snappy": "^1.4.4"
     },
     "require-dev": {
-        "orchestra/testbench": "^7|^8|^9.0"
+        "orchestra/testbench": "^7|^8|^9|^10"
     },
     "autoload": {
         "psr-4": {
