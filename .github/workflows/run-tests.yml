@@ -45,7 +45,7 @@ jobs:
           sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v4
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           coverage: none
