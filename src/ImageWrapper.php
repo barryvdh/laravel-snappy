@@ -64,6 +64,18 @@ class ImageWrapper {
     }
 
     /**
+     * Sets the timeout.
+     *
+     * @param null|int $timeout The timeout to set
+     * @return $this
+     */
+    public function setTimeout($timeout)
+    {
+        $this->snappy->setTimeout($timeout);
+        return $this;
+    }
+    
+    /**
      * Load a HTML string
      *
      * @param string $string
