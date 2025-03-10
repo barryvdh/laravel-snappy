@@ -3,6 +3,7 @@
 use Illuminate\Http\Response;
 use Knp\Snappy\Image as SnappyImage;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
@@ -146,10 +147,11 @@ class ImageWrapper {
      */
     public function download($filename = 'image.jpg')
     {
-        return new Response($this->output(), 200, array(
-            'Content-Type' => 'image/jpeg',
-            'Content-Disposition' =>  'attachment; filename="'.$filename.'"'
-        ));
+        Storage::put($filename, $this->output());
+
+        return response()
+            ->download(Storage::path('/').$filename)
+            ->deleteFileAfterSend();
     }
 
     /**
