@@ -1,29 +1,31 @@
-<?php namespace Barryvdh\Snappy;
+<?php
 
+namespace Barryvdh\Snappy;
+
+use Illuminate\Support\Facades\View as ViewFacade;
 use Illuminate\View\View;
 use PHPUnit\Framework\Assert as PHPUnit;
-use Illuminate\Support\Facades\View as ViewFacade;
-
 
 class PdfFaker extends PdfWrapper
 {
-	protected $view;
-	protected $filename;
+    protected $view;
 
-	/**
+    protected $filename;
+
+    /**
      * Load a View and convert to HTML
      *
-     * @param  string $view
-     * @param  array $data
-     * @param  array $mergeData
+     * @param  string  $view
+     * @param  array  $data
+     * @param  array  $mergeData
      * @return $this
      */
-    public function loadView($view, $data = array(), $mergeData = array())
+    public function loadView($view, $data = [], $mergeData = [])
     {
         $this->view = ViewFacade::make($view, $data, $mergeData);
+
         return parent::loadView($view, $data, $mergeData);
     }
-
 
     /**
      * Ensure that the response has a view as its original content.
@@ -41,9 +43,9 @@ class PdfFaker extends PdfWrapper
 
     public function assertViewIs($value)
     {
-    	PHPUnit::assertEquals($value, $this->view->getName());
+        PHPUnit::assertEquals($value, $this->view->getName());
 
-    	return $this;
+        return $this;
     }
 
     /**
@@ -75,7 +77,6 @@ class PdfFaker extends PdfWrapper
     /**
      * Assert that the response view has a given list of bound data.
      *
-     * @param  array  $bindings
      * @return $this
      */
     public function assertViewHasAll(array $bindings)
@@ -157,7 +158,7 @@ class PdfFaker extends PdfWrapper
 
         return $this;
     }
-    
+
     /**
      * Assert that the given string is equal to the saved filename.
      *
@@ -166,9 +167,9 @@ class PdfFaker extends PdfWrapper
      */
     public function assertFileNameIs($value)
     {
-    	PHPUnit::assertEquals($value, $this->filename);
+        PHPUnit::assertEquals($value, $this->filename);
 
-    	return $this;
+        return $this;
     }
 
     public function output()
@@ -286,12 +287,12 @@ startxref
     /**
      * Save the PDF to a file
      *
-     * @param  $filename
      * @return $this
      */
     public function save($filename, $overwrite = false)
     {
-	$this->filename = $filename;
+        $this->filename = $filename;
+
         return $this;
     }
 }
