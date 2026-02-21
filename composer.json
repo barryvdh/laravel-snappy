@@ -23,7 +23,7 @@
         "knplabs/knp-snappy": "^1.4.4"
     },
     "require-dev": {
-        "orchestra/testbench": "^7|^8|^9|^10|^11"
+        "orchestra/testbench": "^7|^8|^9.16|^10|^11"
     },
     "autoload": {
         "psr-4": {
