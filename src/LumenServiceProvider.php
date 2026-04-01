@@ -1,4 +1,6 @@
-<?php namespace Barryvdh\Snappy;
+<?php
+
+namespace Barryvdh\Snappy;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
@@ -20,49 +22,49 @@ class LumenServiceProvider extends BaseServiceProvider
     {
         $this->app->configure('snappy');
 
-        $configPath = __DIR__ . '/../config/snappy.php';
+        $configPath = __DIR__.'/../config/snappy.php';
         $this->mergeConfigFrom($configPath, 'snappy');
     }
 
     public function boot()
     {
         if ($this->app['config']->get('snappy.pdf.enabled')) {
-            $this->app->bind('snappy.pdf',function ($app) {
+            $this->app->bind('snappy.pdf', function ($app) {
                 $binary = $app['config']->get('snappy.pdf.binary', '/usr/local/bin/wkhtmltopdf');
-                $options = $app['config']->get('snappy.pdf.options', array());
-                $env = $app['config']->get('snappy.pdf.env', array());
+                $options = $app['config']->get('snappy.pdf.options', []);
+                $env = $app['config']->get('snappy.pdf.env', []);
                 $timeout = $app['config']->get('snappy.pdf.timeout', false);
 
                 $snappy = new IlluminateSnappyPdf($app['files'], $binary, $options, $env);
-                if (false !== $timeout) {
+                if ($timeout !== false) {
                     $snappy->setTimeout($timeout);
                 }
 
                 return $snappy;
             });
 
-            $this->app->bind('snappy.pdf.wrapper',function ($app) {
+            $this->app->bind('snappy.pdf.wrapper', function ($app) {
                 return new PdfWrapper($app['snappy.pdf']);
             });
             $this->app->alias('snappy.pdf.wrapper', 'Barryvdh\Snappy\PdfWrapper');
         }
 
         if ($this->app['config']->get('snappy.image.enabled')) {
-            $this->app->bind('snappy.image',function ($app) {
+            $this->app->bind('snappy.image', function ($app) {
                 $binary = $app['config']->get('snappy.image.binary', '/usr/local/bin/wkhtmltoimage');
-                $options = $app['config']->get('snappy.image.options', array());
-                $env = $app['config']->get('snappy.image.env', array());
+                $options = $app['config']->get('snappy.image.options', []);
+                $env = $app['config']->get('snappy.image.env', []);
                 $timeout = $app['config']->get('snappy.image.timeout', false);
 
                 $image = new IlluminateSnappyImage($app['files'], $binary, $options, $env);
-                if (false !== $timeout) {
+                if ($timeout !== false) {
                     $image->setTimeout($timeout);
                 }
 
                 return $image;
             });
 
-            $this->app->bind('snappy.image.wrapper',function ($app) {
+            $this->app->bind('snappy.image.wrapper', function ($app) {
                 return new ImageWrapper($app['snappy.image']);
             });
             $this->app->alias('snappy.image.wrapper', 'Barryvdh\Snappy\ImageWrapper');
@@ -76,6 +78,6 @@ class LumenServiceProvider extends BaseServiceProvider
      */
     public function provides()
     {
-        return array('snappy.pdf', 'snappy.pdf.wrapper', 'snappy.image', 'snappy.image.wrapper');
+        return ['snappy.pdf', 'snappy.pdf.wrapper', 'snappy.image', 'snappy.image.wrapper'];
     }
 }

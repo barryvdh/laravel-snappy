@@ -1,31 +1,32 @@
-<?php namespace Barryvdh\Snappy;
+<?php
 
-use Knp\Snappy\Image;
+namespace Barryvdh\Snappy;
+
 use Illuminate\Filesystem\Filesystem;
+use Knp\Snappy\Image;
 
-class IlluminateSnappyImage extends Image {
+class IlluminateSnappyImage extends Image
+{
     /**
      * @var \Illuminate\Filesystem\Filesystem
      */
     protected $fs;
 
-	/**
-	 * @param \Illuminate\Filesystem\Filesystem
-     * @param string $binary
-     * @param array $options
-	 */
-	public function __construct(Filesystem $fs, $binary, array $options, array $env)
-	{
-		parent::__construct($binary, $options, $env);
+    /**
+     * @param \Illuminate\Filesystem\Filesystem
+     * @param  string  $binary
+     */
+    public function __construct(Filesystem $fs, $binary, array $options, array $env)
+    {
+        parent::__construct($binary, $options, $env);
 
-		$this->fs = $fs;
-	}
+        $this->fs = $fs;
+    }
 
     /**
      * Wrapper for the "file_get_contents" function
      *
-     * @param string $filename
-     *
+     * @param  string  $filename
      * @return string
      */
     protected function getFileContents($filename)
@@ -36,9 +37,8 @@ class IlluminateSnappyImage extends Image {
     /**
      * Wrapper for the "file_exists" function
      *
-     * @param string $filename
-     *
-     * @return boolean
+     * @param  string  $filename
+     * @return bool
      */
     protected function fileExists($filename)
     {
@@ -48,9 +48,8 @@ class IlluminateSnappyImage extends Image {
     /**
      * Wrapper for the "is_file" method
      *
-     * @param string $filename
-     *
-     * @return boolean
+     * @param  string  $filename
+     * @return bool
      */
     protected function isFile($filename)
     {
@@ -60,9 +59,8 @@ class IlluminateSnappyImage extends Image {
     /**
      * Wrapper for the "filesize" function
      *
-     * @param string $filename
-     *
-     * @return integer or FALSE on failure
+     * @param  string  $filename
+     * @return int or FALSE on failure
      */
     protected function filesize($filename)
     {
@@ -72,9 +70,8 @@ class IlluminateSnappyImage extends Image {
     /**
      * Wrapper for the "unlink" function
      *
-     * @param string $filename
-     *
-     * @return boolean
+     * @param  string  $filename
+     * @return bool
      */
     protected function unlink($filename)
     {
@@ -84,9 +81,8 @@ class IlluminateSnappyImage extends Image {
     /**
      * Wrapper for the "is_dir" function
      *
-     * @param string $filename
-     *
-     * @return boolean
+     * @param  string  $filename
+     * @return bool
      */
     protected function isDir($filename)
     {
@@ -96,13 +92,11 @@ class IlluminateSnappyImage extends Image {
     /**
      * Wrapper for the mkdir function
      *
-     * @param string $pathname
-     *
-     * @return boolean
+     * @param  string  $pathname
+     * @return bool
      */
     protected function mkdir($pathname)
     {
         return $this->fs->makeDirectory($pathname, 0777, true, true);
     }
-
 }

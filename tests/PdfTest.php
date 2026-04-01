@@ -2,7 +2,6 @@
 
 namespace Barryvdh\Snappy\Tests;
 
-use Barryvdh\Snappy\Facade;
 use Barryvdh\Snappy\Facades\SnappyPdf;
 use Illuminate\Http\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -80,5 +79,4 @@ class PdfTest extends TestCase
         $this->assertEquals('application/pdf', $response->headers->get('Content-Type'));
         $this->assertEquals('attachment; filename="test.pdf"', $response->headers->get('Content-Disposition'));
     }
-
 }
