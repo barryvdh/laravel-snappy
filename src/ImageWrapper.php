@@ -106,12 +106,20 @@ class ImageWrapper {
     {
         if ($this->html)
         {
-            return $this->snappy->getOutputFromHtml($this->html, $this->options);
+            try {
+                return $this->snappy->getOutputFromHtml($this->html, $this->options);
+            } finally {
+                $this->snappy->removeTemporaryFiles();
+            }
         }
 
         if ($this->file)
         {
-            return $this->snappy->getOutput($this->file, $this->options);
+            try {
+                return $this->snappy->getOutput($this->file, $this->options);
+            } finally {
+                $this->snappy->removeTemporaryFiles();
+            }
         }
 
         throw new \InvalidArgumentException('Image Generator requires a html or file in order to produce output.');
@@ -126,13 +134,17 @@ class ImageWrapper {
     public function save($filename, $overwrite = false)
     {
 
-        if ($this->html)
-        {
-            $this->snappy->generateFromHtml($this->html, $filename, $this->options, $overwrite);
-        }
-        elseif ($this->file)
-        {
-            $this->snappy->generate($this->file, $filename, $this->options, $overwrite);
+        try {
+            if ($this->html)
+            {
+                $this->snappy->generateFromHtml($this->html, $filename, $this->options, $overwrite);
+            }
+            elseif ($this->file)
+            {
+                $this->snappy->generate($this->file, $filename, $this->options, $overwrite);
+            }
+        } finally {
+            $this->snappy->removeTemporaryFiles();
         }
 
         return $this;
