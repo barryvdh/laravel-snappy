@@ -13,6 +13,7 @@ Choose one of the following options to install wkhtmltopdf/wkhtmltoimage.
 
 1. Download wkhtmltopdf from [here](http://wkhtmltopdf.org/downloads.html); 
 2. Or install as a composer dependency. See [wkhtmltopdf binary as composer dependencies](https://github.com/KnpLabs/snappy#wkhtmltopdf-binary-as-composer-dependencies) for more information.
+3. Or install [PDFKiln](https://github.com/pdfkiln/pdfkiln#installation), a maintained replacement that keeps the wkhtmltopdf command line and renders with Chromium. With its Debian package, set `WKHTML_PDF_BINARY=/usr/bin/wkhtmltopdf` and `WKHTML_IMG_BINARY=/usr/bin/wkhtmltoimage` in `.env`.
 
 #### Attention! Please note that some dependencies (libXrender for example) may not be present on your system and may require manual installation. 
 
